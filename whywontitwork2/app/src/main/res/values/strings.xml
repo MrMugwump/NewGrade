@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">NewGrade</string>
+    <string name="CourseViewButton">View Courses</string>
+    <string name="courseName">Course Name</string>
+    <string name="courseGrade">Grade</string>
+    <string name="teacherName">Teacher Name</string>
+    <string name="RoomNumber">Rm. %1$d</string>
+    <string name="PeriodOne">1</string>
+    <string name="periodTwo">2</string>
+    <string name="periodThree">3</string>
+    <string name="periodFour">4</string>
+    <string name="periodFive">5</string>
+    <string name="periodSix">6</string>
+    <string name="periodSeven">7</string>
+    <string name="periodEight">8</string>
+    <string name="nightMode">Night Mode</string>
+    <string name="lightMode">Light Mode</string>
+    <string name="letter">This is the letter grade</string>
+    <string name="gpa">GPA</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="loginButton">Login</string>
+    <string name="userID">ID</string>
+    <string name="homePageSwitch">Login Automatically?</string>
+
+</resources>

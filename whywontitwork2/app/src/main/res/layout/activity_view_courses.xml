@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+
+    <View
+        android:id="@+id/topBanner"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="@color/colorSecondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topBanner">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/periodsOneAndTwo"
+                android:layout_width="match_parent"
+                android:layout_height="163dp">
+
+                <View
+                    android:id="@+id/periodOne"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/periodTwo"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/periodOneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/PeriodOne"
+                    app:layout_constraintStart_toStartOf="@+id/periodOne"
+                    app:layout_constraintTop_toTopOf="@+id/periodOne" />
+
+                <TextView
+                    android:id="@+id/periodOneGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:fontFamily="@font/quicksand_light"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toTopOf="@+id/periodOne" />
+
+                <TextView
+                    android:id="@+id/periodOneName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toBottomOf="@+id/periodOneGrade" />
+
+                <TextView
+                    android:id="@+id/periodOneTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toBottomOf="@+id/periodOneName" />
+
+                <TextView
+                    android:id="@+id/periodOneRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                    app:layout_constraintHorizontal_bias="0.537"
+                    app:layout_constraintStart_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toBottomOf="@+id/periodOneTeacher" />
+
+                <TextView
+                    android:id="@+id/periodTwoNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodTwo"
+                    app:layout_constraintStart_toStartOf="@+id/periodTwo"
+                    app:layout_constraintTop_toTopOf="@+id/periodTwo" />
+
+                <TextView
+                    android:id="@+id/periodTwoGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintTop_toTopOf="@+id/periodTwo" />
+
+                <TextView
+                    android:id="@+id/periodTwoName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintTop_toBottomOf="@+id/periodTwoGrade" />
+
+                <TextView
+                    android:id="@+id/periodTwoTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintTop_toBottomOf="@+id/periodTwoName" />
+
+                <TextView
+                    android:id="@+id/periodTwoRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5"
+                    app:layout_constraintTop_toBottomOf="@+id/periodTwoTeacher" />
+
+                <ImageView
+                    android:id="@+id/periodOneLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodOneGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                    app:layout_constraintTop_toTopOf="@+id/periodOneGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <ImageView
+                    android:id="@+id/periodTwoLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodTwoGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                    app:layout_constraintTop_toTopOf="@+id/periodTwoGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/periodsThreeAndFour"
+                android:layout_width="match_parent"
+                android:layout_height="163dp">
+
+                <View
+                    android:id="@+id/periodThree"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/periodFour"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintHorizontal_bias="0.516"
+                    app:layout_constraintStart_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/periodThreeNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodThree"
+                    app:layout_constraintStart_toStartOf="@+id/periodThree"
+                    app:layout_constraintTop_toTopOf="@+id/periodThree" />
+
+                <TextView
+                    android:id="@+id/periodThreeGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toTopOf="@+id/periodThree" />
+
+                <TextView
+                    android:id="@+id/periodThreeName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/periodThreeGrade" />
+
+                <TextView
+                    android:id="@+id/periodThreeTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintHorizontal_bias="0.534"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/periodThreeName" />
+
+                <TextView
+                    android:id="@+id/periodThreeRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/periodThreeTeacher" />
+
+                <TextView
+                    android:id="@+id/periodFourNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodFour"
+                    app:layout_constraintStart_toStartOf="@+id/periodFour"
+                    app:layout_constraintTop_toTopOf="@+id/periodFour" />
+
+                <TextView
+                    android:id="@+id/periodFourGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toTopOf="@+id/periodFour" />
+
+                <TextView
+                    android:id="@+id/periodFourName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toBottomOf="@+id/periodFourGrade" />
+
+                <TextView
+                    android:id="@+id/periodFourTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintHorizontal_bias="0.462"
+                    app:layout_constraintStart_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toBottomOf="@+id/periodFourName" />
+
+                <TextView
+                    android:id="@+id/periodFourRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintHorizontal_bias="0.462"
+                    app:layout_constraintStart_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toBottomOf="@+id/periodFourTeacher" />
+
+                <ImageView
+                    android:id="@+id/periodThreeLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodThreeGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toTopOf="@+id/periodThreeGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <ImageView
+                    android:id="@+id/periodFourLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodFourGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintTop_toTopOf="@+id/periodFourGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/periodsFiveAndSix"
+                android:layout_width="match_parent"
+                android:layout_height="163dp">
+
+                <View
+                    android:id="@+id/periodFive"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/periodSix"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    app:layout_constraintStart_toStartOf="@+id/guideline10"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/periodFiveNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodFive"
+                    app:layout_constraintStart_toStartOf="@+id/periodFive"
+                    app:layout_constraintTop_toTopOf="@+id/periodFive" />
+
+                <TextView
+                    android:id="@+id/periodFiveGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toTopOf="@+id/periodFive" />
+
+                <TextView
+                    android:id="@+id/periodFiveName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toBottomOf="@+id/periodFiveGrade" />
+
+                <TextView
+                    android:id="@+id/periodFiveTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toBottomOf="@+id/periodFiveName" />
+
+                <TextView
+                    android:id="@+id/periodFiveRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                    app:layout_constraintHorizontal_bias="0.537"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toBottomOf="@+id/periodFiveTeacher" />
+
+                <TextView
+                    android:id="@+id/periodSixNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodSix"
+                    app:layout_constraintStart_toStartOf="@+id/periodSix"
+                    app:layout_constraintTop_toTopOf="@+id/periodSix" />
+
+                <TextView
+                    android:id="@+id/periodSixGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline10"
+                    app:layout_constraintTop_toTopOf="@+id/periodSix" />
+
+                <TextView
+                    android:id="@+id/periodSixName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    app:layout_constraintStart_toStartOf="@+id/guideline10"
+                    app:layout_constraintTop_toBottomOf="@+id/periodSixGrade" />
+
+                <TextView
+                    android:id="@+id/periodSixTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    app:layout_constraintStart_toStartOf="@+id/guideline10"
+                    app:layout_constraintTop_toBottomOf="@+id/periodSixName" />
+
+                <TextView
+                    android:id="@+id/periodSixRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintStart_toStartOf="@+id/guideline10"
+                    app:layout_constraintTop_toBottomOf="@+id/periodSixTeacher" />
+
+                <ImageView
+                    android:id="@+id/periodFiveLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodFiveGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toTopOf="@+id/periodFiveGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <ImageView
+                    android:id="@+id/periodSixLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodSixGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline10"
+                    app:layout_constraintTop_toTopOf="@+id/periodSixGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/periodsSevenAndEight"
+                android:layout_width="match_parent"
+                android:layout_height="167dp">
+
+                <View
+                    android:id="@+id/periodSeven"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                    app:layout_constraintStart_toStartOf="@+id/guideline13"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/periodEight"
+                    android:layout_width="151dp"
+                    android:layout_height="151dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/rounded_corner"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                    app:layout_constraintStart_toStartOf="@+id/guideline14"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/periodSevenNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodSeven"
+                    app:layout_constraintStart_toStartOf="@+id/periodSeven"
+                    app:layout_constraintTop_toTopOf="@+id/periodSeven" />
+
+                <TextView
+                    android:id="@+id/periodSevenGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline13"
+                    app:layout_constraintTop_toTopOf="@+id/periodSeven" />
+
+                <TextView
+                    android:id="@+id/periodSevenName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                    app:layout_constraintStart_toStartOf="@+id/guideline13"
+                    app:layout_constraintTop_toBottomOf="@+id/periodSevenGrade" />
+
+                <TextView
+                    android:id="@+id/periodSevenTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                    app:layout_constraintHorizontal_bias="0.465"
+                    app:layout_constraintStart_toStartOf="@+id/guideline13"
+                    app:layout_constraintTop_toBottomOf="@+id/periodSevenName" />
+
+                <TextView
+                    android:id="@+id/periodSevenRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                    app:layout_constraintHorizontal_bias="0.505"
+                    app:layout_constraintStart_toStartOf="@+id/guideline13"
+                    app:layout_constraintTop_toBottomOf="@+id/periodSevenTeacher" />
+
+                <TextView
+                    android:id="@+id/periodEightNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/periodEight"
+                    app:layout_constraintStart_toStartOf="@+id/periodEight"
+                    app:layout_constraintTop_toTopOf="@+id/periodEight" />
+
+                <TextView
+                    android:id="@+id/periodEightGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseGrade"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="@+id/guideline14"
+                    app:layout_constraintTop_toTopOf="@+id/periodEight" />
+
+                <TextView
+                    android:id="@+id/periodEightName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/courseName"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                    app:layout_constraintStart_toStartOf="@+id/guideline14"
+                    app:layout_constraintTop_toBottomOf="@+id/periodEightGrade" />
+
+                <TextView
+                    android:id="@+id/periodEightTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/teacherName"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                    app:layout_constraintStart_toStartOf="@+id/guideline14"
+                    app:layout_constraintTop_toBottomOf="@+id/periodEightName" />
+
+                <TextView
+                    android:id="@+id/periodEightRoom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/quicksand_light"
+                    android:text="@string/RoomNumber"
+                    android:textColor="@color/secondaryTextColor"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                    app:layout_constraintHorizontal_bias="0.462"
+                    app:layout_constraintStart_toStartOf="@+id/guideline14"
+                    app:layout_constraintTop_toBottomOf="@+id/periodEightTeacher" />
+
+                <ImageView
+                    android:id="@+id/periodSevenLetter"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodSevenGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                    app:layout_constraintTop_toTopOf="@+id/periodSevenGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <ImageView
+                    android:id="@+id/periodThreeLetter5"
+                    android:layout_width="70dp"
+                    android:layout_height="43dp"
+                    android:contentDescription="@string/letter"
+                    app:layout_constraintBottom_toBottomOf="@+id/periodEightGrade"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline14"
+                    app:layout_constraintTop_toTopOf="@+id/periodEightGrade"
+                    app:srcCompat="@drawable/b" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.25" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/GPA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/quicksand_light"
+        android:text="@string/gpa"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50"/>
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Switch"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        tools:layout_editor_absoluteY="42dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
