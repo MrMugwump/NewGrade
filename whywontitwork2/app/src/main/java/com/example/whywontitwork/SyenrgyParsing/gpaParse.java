@@ -1,5 +1,7 @@
 package com.example.whywontitwork.SyenrgyParsing;
 
+import android.util.Log;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,7 +25,7 @@ public class gpaParse {
         String weightedGpaString = weightedGpa.toString();
 
         String crudeUnweightedGpaString = unweightedGpaString.replace("<span class=\"gpa-score\">","");
-        String crudeWeightedGpaString = unweightedGpaString.replace("<span class=\"gpa-score\">","");
+        String crudeWeightedGpaString = weightedGpaString.replace("<span class=\"gpa-score\">","");
 
         String pureUnweightedGpaString = crudeUnweightedGpaString.replace("</span>","");
         String pureWeightedGpaString = crudeWeightedGpaString.replace("</span>","");
@@ -33,7 +35,9 @@ public class gpaParse {
 
         String[] gpaArray = new String[2];
         gpaArray[0] = pureUnweightedGpaString;
+        Log.d("Gpa stuff", "gpaparse: " +gpaArray[0]);
         gpaArray[1] = pureWeightedGpaString;
+        Log.d("Gpa stuff", "gpaparse: " + gpaArray[1]);
 
         return gpaArray;
     }

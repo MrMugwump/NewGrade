@@ -22,5 +22,7 @@
     <string name="loginButton">Login</string>
     <string name="userID">ID</string>
     <string name="homePageSwitch">Login Automatically?</string>
+    <string name="WeightedGPA">Weighted</string>
+    <string name="UnweightedGPA">Unweighted</string>
 
 </resources>

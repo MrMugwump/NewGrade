@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startNewActivity(String[] gpaArray){
-        //Log.d("gamertime", gpaArray[0]);
         Intent intent = new Intent (this, CourseView.class);
         intent.putExtra("GPA array", gpaArray);
         startActivity(intent);
