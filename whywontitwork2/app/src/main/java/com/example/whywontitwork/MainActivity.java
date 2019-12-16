@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         sharedPreferences.getString("Email", null);
-        //Log.d("YEET", "onCreate: "+ sharedPreferences.getString("Email", null));
     }
 
     public void checkForIfYouCanLogin(View view) {
