@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.whywontitwork.DataObjects.CourseDataObject;
 import com.example.whywontitwork.SyenrgyParsing.Login;
 
 import java.io.IOException;
@@ -48,16 +49,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startNewActivity(String[] gpaArray){
+    private void startNewActivity(String[] gpaArray, CourseDataObject[] courseDataObjects){
         Intent intent = new Intent (this, CourseView.class);
         intent.putExtra("GPA array", gpaArray);
+        intent.putExtra("Course data", courseDataObjects);
         startActivity(intent);
+    }
+    private void didntLogIn(){
+
     }
 
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;
         String[] gpaArray;
+        CourseDataObject[] courseDataObjects;
+        boolean loggedIn;
 
         Content(MainActivity mainActivity){
             this.mainActivity = mainActivity;
@@ -73,7 +80,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                gpaArray = Login.login(password, email);
+                //boolean loggedIn = Login.checkLogin(password, email);
+                //if (loggedIn) {
+                    //gpaArray = Login.getGPA(password, email);
+                    courseDataObjects = Login.login(password, email);
+                //}
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
@@ -84,7 +95,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            mainActivity.startNewActivity(gpaArray);
+            //if (loggedIn)
+                mainActivity.startNewActivity(gpaArray, courseDataObjects);
+            //else
+               // mainActivity.didntLogIn();
+
             super.onPostExecute(aVoid);
         }
 

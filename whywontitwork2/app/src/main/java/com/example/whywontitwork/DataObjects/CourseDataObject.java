@@ -1,22 +1,28 @@
 package com.example.whywontitwork.DataObjects;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourseDataObject {
+public class CourseDataObject implements Parcelable {
     public String courseName;
     public String teacherName;
     public int roomNumber;
+    public String room;
     public int periodNumber;
     public float grade; //may be null
+    public String gradeScore;
+    public String gradeLetter;
     private List<AssignmentDataObject> listOfAssignements = new ArrayList<>();
 
-    public CourseDataObject(String courseName, String teacherName, int roomNumber, int periodNumber, float grade) {
-        this.courseName = courseName;
+    public CourseDataObject() {
+        /*this.courseName = courseName;
         this.teacherName = teacherName;
         this.roomNumber = roomNumber;
         this.periodNumber = periodNumber;
-        this.grade = grade;
+        this.grade = grade;*/
     }
 
     public void addAssignment(AssignmentDataObject assignment){
@@ -27,4 +33,13 @@ public class CourseDataObject {
         return listOfAssignements;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }

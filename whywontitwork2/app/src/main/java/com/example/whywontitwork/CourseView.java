@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.whywontitwork.DataObjects.CourseDataObject;
 import com.example.whywontitwork.SyenrgyParsing.Login;
 
 import java.io.IOException;
@@ -35,6 +36,9 @@ public class CourseView extends AppCompatActivity {
 
         final String[] gpa = (String[]) (bundle.get("GPA array"));
         changeStrings(gpa);
+
+        final CourseDataObject[] courseDataObjects = (CourseDataObject[]) bundle.get("Course data");
+
 
         final TextView textView = findViewById(R.id.GPA);
 
