@@ -22,8 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class CourseView extends AppCompatActivity {
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,28 +44,85 @@ public class CourseView extends AppCompatActivity {
         Switch toggle = findViewById(R.id.gpaSwitch);
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    textView.setText("Weighted " + gpa[1]);
-                } else {
-                    textView.setText("Unweighted " + gpa[0]);
-
-                }
+                changeGPAText(textView, isChecked, gpa);
             }
         });
     }
 
     private void changeStrings(String[] gpa, CourseDataObject[] courseDataObjects){
         TextView textView = findViewById(R.id.GPA);
-        TextView periodOneGrade = findViewById(R.id.periodOneGrade);
-
         Switch toggle = findViewById(R.id.gpaSwitch);
-        if (toggle.isChecked())
-            textView.setText("Weighted " + gpa[1]);
+        changeGPAText(textView, toggle.isChecked(), gpa); //Sets gpa text
+        
+        TextView courseGrade = findViewById(R.id.periodOneGrade);
+        TextView courseName = findViewById(R.id.periodOneName);
+        TextView teacherName = findViewById(R.id.periodOneTeacher);
+        TextView roomNumber = findViewById(R.id.periodOneRoom);
+        
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[0]);
+        
+        courseGrade = findViewById(R.id.periodTwoGrade);
+        courseName = findViewById(R.id.periodTwoName);
+        teacherName = findViewById(R.id.periodTwoTeacher);
+        roomNumber = findViewById(R.id.periodTwoRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[1]);
+
+        courseGrade = findViewById(R.id.periodThreeGrade);
+        courseName = findViewById(R.id.periodThreeName);
+        teacherName = findViewById(R.id.periodThreeTeacher);
+        roomNumber = findViewById(R.id.periodThreeRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[2]);
+
+        courseGrade = findViewById(R.id.periodFourGrade);
+        courseName = findViewById(R.id.periodFourName);
+        teacherName = findViewById(R.id.periodFourTeacher);
+        roomNumber = findViewById(R.id.periodFourRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[3]);
+
+        courseGrade = findViewById(R.id.periodFiveGrade);
+        courseName = findViewById(R.id.periodFiveName);
+        teacherName = findViewById(R.id.periodFiveTeacher);
+        roomNumber = findViewById(R.id.periodFiveRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[4]);
+
+        courseGrade = findViewById(R.id.periodSixGrade);
+        courseName = findViewById(R.id.periodSixName);
+        teacherName = findViewById(R.id.periodSixTeacher);
+        roomNumber = findViewById(R.id.periodSixRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[5]);
+
+        courseGrade = findViewById(R.id.periodSevenGrade);
+        courseName = findViewById(R.id.periodSevenName);
+        teacherName = findViewById(R.id.periodSevenTeacher);
+        roomNumber = findViewById(R.id.periodSevenRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[6]);
+
+        courseGrade = findViewById(R.id.periodEightGrade);
+        courseName = findViewById(R.id.periodEightName);
+        teacherName = findViewById(R.id.periodEightTeacher);
+        roomNumber = findViewById(R.id.periodEightRoom);
+
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[7]);
+        
+    }
+    
+    private void changeGPAText(TextView textView, boolean isChecked, String[] gpa){
+        if (isChecked)
+            textView.setText("Weighted " + gpa[1]); //Change this later so it doesn't yell at me.
         else
             textView.setText("Unweighted " + gpa[0]);
-
-        periodOneGrade.setText(courseDataObjects[0].gradeScore);
-
-
+    }
+    
+    private void changeCourseText(TextView grade, TextView courseName, TextView teacherName, TextView roomNumber, CourseDataObject courseDataObject){
+        grade.setText(courseDataObject.gradeScore);
+        courseName.setText(courseDataObject.courseName);
+        teacherName.setText(courseDataObject.teacherName);
+        roomNumber.setText(courseDataObject.room);
     }
 }

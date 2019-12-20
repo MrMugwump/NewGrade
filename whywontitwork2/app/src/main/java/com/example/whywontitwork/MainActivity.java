@@ -42,10 +42,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("Email", email);
         editor.apply();
 
-        editor.putString("Password", password);
+        editor.putString("Password", password); //Saves Password and id, so we could log in automatically later.
         editor.apply();
-
-
 
         Content content = new Content(this);
         content.execute();
@@ -54,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void startNewActivity(String[] gpaArray, CourseDataObject[] courseDataObjects){
         Intent intent = new Intent (this, CourseView.class);
-        intent.putExtra("GPA array", gpaArray);
-        //intent.putExtra("Course data", courseDataObjects);
         startActivity(intent);
     }
     private void didntLogIn(){
@@ -67,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         MainActivity mainActivity;
         String[] gpaArray;
         CourseDataObject[] courseDataObjects;
-        boolean loggedIn;
 
         Content(MainActivity mainActivity){
             this.mainActivity = mainActivity;
@@ -83,11 +78,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                //boolean loggedIn = Login.checkLogin(password, email);
-                //if (loggedIn) {
-                    //gpaArray = Login.getGPA(password, email);
-                    Login.login(password, email);
-                //}
+                Login.login(password, email);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (InterruptedException e) {
