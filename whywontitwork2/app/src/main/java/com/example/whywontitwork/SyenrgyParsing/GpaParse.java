@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 
-public class gpaParse {
+public class GpaParse {
 
     public static Document connectToCourseHistoryPage(Connection.Response loginForm) throws IOException {
         String courseHistoryUrl = "https://parent-portland.cascadetech.org/portland/PXP2_CourseHistory.aspx?AGU=0";

@@ -1,25 +1,20 @@
 package com.example.whywontitwork.SyenrgyParsing;
 
 
-import android.content.Intent;
-
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.util.ArrayList;
-
-public class GradeBookOrganizer {
+class GradeBookOrganizer {
 
     // Takes the required information on the Gradebook page and puts it into a 2D array
 
     //Creates an array of the Course data objects and returns it
-    public static CourseDataObject[] fillCourseArray(Document gradeBookPage ){
+    /*public static CourseDataObject[] fillCourseArray(Document gradeBookPage ){
         return alternativeFillDataArray(gradeBookPage);
-    }
-    public static CourseDataObject[] fillDataArray(Document gradeBookPage){
+    }*/
+    /*public static CourseDataObject[] fillDataArray(Document gradeBookPage){
         //Creates a 2D ArrayList of strings and fills it by grabbing information from the gradeBookPage Document
         ArrayList<ArrayList<String>> dataArray = new ArrayList<>();
         dataArray.add(new ArrayList<String>());
@@ -68,9 +63,9 @@ public class GradeBookOrganizer {
         }
         // courseArrayList is returned to fillCourseArray so it can be returned to main
         return courseDataObjects;
-    }
+    }*/
 
-    public static CourseDataObject[] alternativeFillDataArray(Document gradeBookPage){
+    static CourseDataObject[] alternativeFillDataArray(Document gradeBookPage){
         CourseDataObject[] courseDataObjects = new CourseDataObject[]{
                 new CourseDataObject(), new CourseDataObject(), new CourseDataObject(), new CourseDataObject(),
                 new CourseDataObject(), new CourseDataObject(), new CourseDataObject(), new CourseDataObject()

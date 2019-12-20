@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     String email;
     String password;
+    static CourseDataObject[] courseDataObjects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("Password", password);
         editor.apply();
 
+
+
         Content content = new Content(this);
         content.execute();
 
@@ -52,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private void startNewActivity(String[] gpaArray, CourseDataObject[] courseDataObjects){
         Intent intent = new Intent (this, CourseView.class);
         intent.putExtra("GPA array", gpaArray);
-        intent.putExtra("Course data", courseDataObjects);
+        //intent.putExtra("Course data", courseDataObjects);
         startActivity(intent);
     }
     private void didntLogIn(){
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 //boolean loggedIn = Login.checkLogin(password, email);
                 //if (loggedIn) {
                     //gpaArray = Login.getGPA(password, email);
-                    courseDataObjects = Login.login(password, email);
+                    Login.login(password, email);
                 //}
             } catch (IOException e) {
                 e.printStackTrace();

@@ -2,6 +2,7 @@ package com.example.whywontitwork.SyenrgyParsing;
 import android.util.Log;
 
 import com.example.whywontitwork.DataObjects.CourseDataObject;
+import com.example.whywontitwork.DataObjects.DataHolder;
 
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
@@ -17,7 +18,7 @@ public class Login {
     private static final String DEBUG_TAG = "WebScraperStuff";
 
 
-    public static CourseDataObject[] login(String password, String id) throws IOException, InterruptedException {
+    public static void login(String password, String id) throws IOException, InterruptedException {
 
         Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
                 .method(Connection.Method.GET)
@@ -49,40 +50,15 @@ public class Login {
 
         String HomePageHtml = doc.toString();
         TimeUnit.SECONDS.sleep(1);
-        //return doc;
+
         ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        //GpaParse.gpaparse(loginForm);
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        return GradeBookOrganizer.fillCourseArray(GradeBookPage);
 
+        DataHolder.setCourseDataObjects(GradeBookOrganizer.alternativeFillDataArray(GradeBookPage)); //Stores data as a static reference.
+        DataHolder.setGpaArray(GpaParse.gpaparse(loginForm));
 
-        }
+    }
 
-        /*public static boolean checkLogin(String password, String id) throws IOException, InterruptedException {
-            Document doc = login(password, id);
-            return !doc.toString().contains("Return to common login");
-        }
-
-        public static String[] getGPA(String password, String id) throws IOException {
-            Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
-                    .method(Connection.Method.GET)
-                    .userAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36")
-                    .execute();
-            return gpaParse.gpaparse(loginForm);
-        }
-
-        public static CourseDataObject[] getClasses(String password, String id) throws IOException, InterruptedException {
-            Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
-                    .method(Connection.Method.GET)
-                    .userAgent("Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.87 Safari/537.36")
-                    .execute();
-            String HomePageHtml = login(password, id).toString();
-            ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
-            String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
-            //GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-            Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-            return GradeBookOrganizer.fillDataArray(GradeBookPage);
-        }*/
 }

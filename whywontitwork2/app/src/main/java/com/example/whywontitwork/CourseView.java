@@ -12,6 +12,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.whywontitwork.DataObjects.CourseDataObject;
+import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
 
 import java.io.IOException;
@@ -34,11 +35,10 @@ public class CourseView extends AppCompatActivity {
         assert bundle != null;
 
 
-        final String[] gpa = (String[]) (bundle.get("GPA array"));
-        changeStrings(gpa);
+        final String[] gpa = DataHolder.getGpaArray();
+        final CourseDataObject[] courseDataObjects = DataHolder.getCourseDataObjects();
 
-        final CourseDataObject[] courseDataObjects = (CourseDataObject[]) bundle.get("Course data");
-
+        changeStrings(gpa, courseDataObjects);
 
         final TextView textView = findViewById(R.id.GPA);
 
@@ -55,14 +55,17 @@ public class CourseView extends AppCompatActivity {
         });
     }
 
-    private void changeStrings(String[] gpa){
+    private void changeStrings(String[] gpa, CourseDataObject[] courseDataObjects){
         TextView textView = findViewById(R.id.GPA);
+        TextView periodOneGrade = findViewById(R.id.periodOneGrade);
 
         Switch toggle = findViewById(R.id.gpaSwitch);
         if (toggle.isChecked())
-            textView.setText("Weighted" + gpa[1]);
+            textView.setText("Weighted " + gpa[1]);
         else
-            textView.setText("Unweighted" + gpa[0]);
+            textView.setText("Unweighted " + gpa[0]);
+
+        periodOneGrade.setText(courseDataObjects[0].gradeScore);
 
 
     }
