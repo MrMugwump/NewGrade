@@ -1,23 +1,20 @@
 package com.example.whywontitwork.SyenrgyParsing;
 
-import android.util.Log;
-
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import java.io.IOException;
 
-public class GpaParse {
+class GpaParse {
 
-    public static Document connectToCourseHistoryPage(Connection.Response loginForm) throws IOException {
+    private static Document connectToCourseHistoryPage(Connection.Response loginForm) throws IOException {
         String courseHistoryUrl = "https://parent-portland.cascadetech.org/portland/PXP2_CourseHistory.aspx?AGU=0";
-        Document courseHitoryPage = Jsoup.connect(courseHistoryUrl)
+        return Jsoup.connect(courseHistoryUrl)
                 .cookies(loginForm.cookies())
                 .post();
-        return courseHitoryPage;
     }
-    public static String[] gpaparse(Connection.Response loginForm) throws IOException {
+    static String[] gpaParse(Connection.Response loginForm) throws IOException {
         Elements unweightedGpa = connectToCourseHistoryPage(loginForm).select("#ctl00_ctl00_MainContent_PXPMainContent_CourseHistoryContent > div.right-panel > div:nth-child(1) > div > span.gpa-score");
         Elements weightedGpa = connectToCourseHistoryPage(loginForm).select("#ctl00_ctl00_MainContent_PXPMainContent_CourseHistoryContent > div.right-panel > div:nth-child(2) > div > span.gpa-score");
 
@@ -30,14 +27,9 @@ public class GpaParse {
         String pureUnweightedGpaString = crudeUnweightedGpaString.replace("</span>","");
         String pureWeightedGpaString = crudeWeightedGpaString.replace("</span>","");
 
-        System.out.println("Unweighted " + pureUnweightedGpaString);
-        System.out.println("Weighted " + pureWeightedGpaString);
-
         String[] gpaArray = new String[2];
         gpaArray[0] = pureUnweightedGpaString;
-        Log.d("Gpa stuff", "gpaparse: " +gpaArray[0]);
         gpaArray[1] = pureWeightedGpaString;
-        Log.d("Gpa stuff", "gpaparse: " + gpaArray[1]);
 
         return gpaArray;
     }

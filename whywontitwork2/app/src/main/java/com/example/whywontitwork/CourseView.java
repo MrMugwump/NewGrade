@@ -53,8 +53,10 @@ public class CourseView extends AppCompatActivity {
         TextView textView = findViewById(R.id.GPA);
         Switch toggle = findViewById(R.id.gpaSwitch);
         changeGPAText(textView, toggle.isChecked(), gpa); //Sets gpa text
+
+        UpdateUI.changeTextviews(this, courseDataObjects);
         
-        TextView courseGrade = findViewById(R.id.periodOneGrade);
+        /*TextView courseGrade = findViewById(R.id.periodOneGrade);
         TextView courseName = findViewById(R.id.periodOneName);
         TextView teacherName = findViewById(R.id.periodOneTeacher);
         TextView roomNumber = findViewById(R.id.periodOneRoom);
@@ -108,7 +110,7 @@ public class CourseView extends AppCompatActivity {
         teacherName = findViewById(R.id.periodEightTeacher);
         roomNumber = findViewById(R.id.periodEightRoom);
 
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[7]);
+        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[7]);*/
         
     }
     
