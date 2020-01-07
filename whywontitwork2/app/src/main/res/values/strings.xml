@@ -27,5 +27,15 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="updateButton">Update</string>
+    <string name="popupButton">Widget Course</string>
+    <string name="periodTwoOption">Period Two</string>
+    <string name="periodOneOption">Period One</string>
+    <string name="periodThreeOption">Period Three</string>
+    <string name="periodFourOption">Period Four</string>
+    <string name="periodFiveOption">Period Five</string>
+    <string name="periodSixOption">Period Six</string>
+    <string name="periodSevenOption">Period Seven</string>
+    <string name="periodEightOption">Period Eight</string>
+    <string name="backButton"><![CDATA[<---]]></string>
 
 </resources>

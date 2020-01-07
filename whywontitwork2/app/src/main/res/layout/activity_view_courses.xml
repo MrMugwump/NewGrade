@@ -34,7 +34,7 @@
                 android:layout_height="163dp">
 
                 <View
-                    android:id="@+id/periodOne"
+                    android:id="@+id/periodOneOption"
                     android:layout_width="151dp"
                     android:layout_height="151dp"
                     android:layout_marginTop="8dp"
@@ -44,7 +44,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
-                    android:id="@+id/periodTwo"
+                    android:id="@+id/periodTwoOption"
                     android:layout_width="151dp"
                     android:layout_height="151dp"
                     android:layout_marginTop="8dp"
@@ -62,8 +62,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/PeriodOne"
-                    app:layout_constraintStart_toStartOf="@+id/periodOne"
-                    app:layout_constraintTop_toTopOf="@+id/periodOne" />
+                    app:layout_constraintStart_toStartOf="@+id/periodOneOption"
+                    app:layout_constraintTop_toTopOf="@+id/periodOneOption" />
 
                 <TextView
                     android:id="@+id/periodOneGrade"
@@ -75,7 +75,7 @@
                     android:textSize="24sp"
                     app:fontFamily="@font/quicksand_light"
                     app:layout_constraintStart_toStartOf="@+id/guideline6"
-                    app:layout_constraintTop_toTopOf="@+id/periodOne" />
+                    app:layout_constraintTop_toTopOf="@+id/periodOneOption" />
 
                 <TextView
                     android:id="@+id/periodOneName"
@@ -123,8 +123,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/periodTwo"
-                    app:layout_constraintStart_toStartOf="@+id/periodTwo"
-                    app:layout_constraintTop_toTopOf="@+id/periodTwo" />
+                    app:layout_constraintStart_toStartOf="@+id/periodTwoOption"
+                    app:layout_constraintTop_toTopOf="@+id/periodTwoOption" />
 
                 <TextView
                     android:id="@+id/periodTwoGrade"
@@ -135,7 +135,7 @@
                     android:text="@string/courseGrade"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="@+id/guideline5"
-                    app:layout_constraintTop_toTopOf="@+id/periodTwo" />
+                    app:layout_constraintTop_toTopOf="@+id/periodTwoOption" />
 
                 <TextView
                     android:id="@+id/periodTwoName"
@@ -782,4 +782,41 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/GPA" />
+
+    <Button
+        android:id="@+id/popupMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/widget_drawable"
+        android:onClick="ShowPopup"
+        android:text="@string/popupButton"
+        android:textColor="@color/colorSecondary"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="38dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/widget_drawable"
+        android:onClick="GoBack"
+        android:text="@string/backButton"
+        android:textColor="@color/colorSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

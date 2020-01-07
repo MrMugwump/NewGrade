@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/periodOneOption"
+        android:title="@string/periodOneOption" />
+    <item
+        android:id="@+id/periodTwoOption"
+        android:title="@string/periodTwoOption" />
+    <item
+        android:id="@+id/periodThreeOption"
+        android:title="@string/periodThreeOption" />
+    <item
+        android:id="@+id/periodFourOption"
+        android:title="@string/periodFourOption" />
+    <item
+        android:id="@+id/periodFiveOption"
+        android:title="@string/periodFiveOption" />
+    <item
+        android:id="@+id/periodSixOption"
+        android:title="@string/periodSixOption" />
+    <item
+        android:id="@+id/periodSevenOption"
+        android:title="@string/periodSevenOption" />
+    <item
+        android:id="@+id/periodEightOption"
+        android:title="@string/periodEightOption" />
+</menu>

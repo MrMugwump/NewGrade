@@ -6,6 +6,16 @@ public class DataHolder {
     private static CourseDataObject[] courseDataObjects;
     private static String[] gpaArray;
     private static Document doc;
+    private static int courseChosen;
+
+    public static int getCourseChosen() {
+        return courseChosen;
+    }
+
+    public static void setCourseChosen(int courseChosen) {
+        DataHolder.courseChosen = courseChosen;
+    }
+
 
     public static Document getDoc() {
         return doc;

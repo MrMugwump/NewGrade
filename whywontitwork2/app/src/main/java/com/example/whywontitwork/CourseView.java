@@ -1,33 +1,25 @@
 package com.example.whywontitwork;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Element;
-import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 import com.example.whywontitwork.DataObjects.DataHolder;
-import com.example.whywontitwork.SyenrgyParsing.Login;
 
-import java.io.IOException;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
-public class CourseView extends AppCompatActivity {
+public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Content content = new Content(this);
-        //content.execute();
 
         setContentView(R.layout.activity_view_courses);
         Bundle bundle = getIntent().getExtras();
@@ -55,62 +47,7 @@ public class CourseView extends AppCompatActivity {
         changeGPAText(textView, toggle.isChecked(), gpa); //Sets gpa text
 
         UpdateUI.changeTextviews(this, courseDataObjects);
-        
-        /*TextView courseGrade = findViewById(R.id.periodOneGrade);
-        TextView courseName = findViewById(R.id.periodOneName);
-        TextView teacherName = findViewById(R.id.periodOneTeacher);
-        TextView roomNumber = findViewById(R.id.periodOneRoom);
-        
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[0]);
-        
-        courseGrade = findViewById(R.id.periodTwoGrade);
-        courseName = findViewById(R.id.periodTwoName);
-        teacherName = findViewById(R.id.periodTwoTeacher);
-        roomNumber = findViewById(R.id.periodTwoRoom);
 
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[1]);
-
-        courseGrade = findViewById(R.id.periodThreeGrade);
-        courseName = findViewById(R.id.periodThreeName);
-        teacherName = findViewById(R.id.periodThreeTeacher);
-        roomNumber = findViewById(R.id.periodThreeRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[2]);
-
-        courseGrade = findViewById(R.id.periodFourGrade);
-        courseName = findViewById(R.id.periodFourName);
-        teacherName = findViewById(R.id.periodFourTeacher);
-        roomNumber = findViewById(R.id.periodFourRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[3]);
-
-        courseGrade = findViewById(R.id.periodFiveGrade);
-        courseName = findViewById(R.id.periodFiveName);
-        teacherName = findViewById(R.id.periodFiveTeacher);
-        roomNumber = findViewById(R.id.periodFiveRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[4]);
-
-        courseGrade = findViewById(R.id.periodSixGrade);
-        courseName = findViewById(R.id.periodSixName);
-        teacherName = findViewById(R.id.periodSixTeacher);
-        roomNumber = findViewById(R.id.periodSixRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[5]);
-
-        courseGrade = findViewById(R.id.periodSevenGrade);
-        courseName = findViewById(R.id.periodSevenName);
-        teacherName = findViewById(R.id.periodSevenTeacher);
-        roomNumber = findViewById(R.id.periodSevenRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[6]);
-
-        courseGrade = findViewById(R.id.periodEightGrade);
-        courseName = findViewById(R.id.periodEightName);
-        teacherName = findViewById(R.id.periodEightTeacher);
-        roomNumber = findViewById(R.id.periodEightRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[7]);*/
         
     }
     
@@ -120,11 +57,49 @@ public class CourseView extends AppCompatActivity {
         else
             textView.setText("Unweighted " + gpa[0]);
     }
-    
-    private void changeCourseText(TextView grade, TextView courseName, TextView teacherName, TextView roomNumber, CourseDataObject courseDataObject){
-        grade.setText(courseDataObject.gradeScore);
-        courseName.setText(courseDataObject.courseName);
-        teacherName.setText(courseDataObject.teacherName);
-        roomNumber.setText(courseDataObject.room);
+
+    public void GoBack(View view){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void ShowPopup(View view){
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.course_selection);
+        popupMenu.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()){
+            case R.id.periodTwoOption:
+                DataHolder.setCourseChosen(1);
+                break;
+            case R.id.periodThreeOption:
+                DataHolder.setCourseChosen(2);
+                break;
+            case R.id.periodFourOption:
+                DataHolder.setCourseChosen(3);
+                break;
+            case R.id.periodFiveOption:
+                DataHolder.setCourseChosen(4);
+                break;
+            case R.id.periodSixOption:
+                DataHolder.setCourseChosen(5);
+                break;
+            case R.id.periodSevenOption:
+                DataHolder.setCourseChosen(6);
+                break;
+            case R.id.periodEightOption:
+                DataHolder.setCourseChosen(7);
+                break;
+            default:
+               DataHolder.setCourseChosen(0);
+               break;
+
+        }
+        Toast.makeText(this, "Period chosen for widget: " + DataHolder.getCourseChosen(), Toast.LENGTH_SHORT).show();
+        return false;
     }
 }
