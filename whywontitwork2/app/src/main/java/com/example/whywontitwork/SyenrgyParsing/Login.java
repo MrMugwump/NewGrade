@@ -1,7 +1,4 @@
 package com.example.whywontitwork.SyenrgyParsing;
-import android.util.Log;
-
-import com.example.whywontitwork.DataObjects.CourseDataObject;
 import com.example.whywontitwork.DataObjects.DataHolder;
 
 import org.jsoup.*;
@@ -9,16 +6,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class Login {
-    private static final String USER_AGENT = "\"Mozilla/5.0 (Windows NT\" +\n" + "          \" 6.1; WOW64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.120 Safari/535.2\"";
-    private static final String USER_ID = "bbridenbaug7077";
-    private static final String USER_PASSWORD = "Groovyman23";
-    private static final String DEBUG_TAG = "WebScraperStuff";
 
 
-    public static void login(String password, String id) throws IOException, InterruptedException {
+    public static void login(String password, String id) throws IOException {
 
         Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
                 .method(Connection.Method.GET)
@@ -26,7 +18,6 @@ public class Login {
                 .execute();
 
         Document loginDoc = loginForm.parse(); // this is the document that contains response html
-
 
         /*
             We need to get the values for the login form
@@ -49,16 +40,23 @@ public class Login {
                 .post(); //logs in
 
         String HomePageHtml = doc.toString();
-        TimeUnit.SECONDS.sleep(1);
+        DataHolder.setDoc(doc);
+
+        if(!checkLogin(doc)) //Checks if you logged in before running anything else
+            return;
 
         ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
 
-        DataHolder.setCourseDataObjects(GradeBookOrganizer.alternativeFillDataArray(GradeBookPage)); //Stores data as a static reference.
-        DataHolder.setGpaArray(GpaParse.gpaparse(loginForm));
+        DataHolder.setCourseDataObjects(GradeBookOrganizer.fillDataArray(GradeBookPage)); //Stores data as a static reference.
+        DataHolder.setGpaArray(GpaParse.gpaParse(loginForm));
 
+    }
+
+    public static boolean checkLogin(Document doc) {
+        return !doc.toString().contains("Return to common login");
     }
 
 }

@@ -1,17 +1,17 @@
 package com.example.whywontitwork;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.whywontitwork.DataObjects.CourseDataObject;
+import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
 
 import java.io.IOException;
@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     String email;
     String password;
-    static CourseDataObject[] courseDataObjects;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,19 +48,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startNewActivity(String[] gpaArray, CourseDataObject[] courseDataObjects){
-        Intent intent = new Intent (this, CourseView.class);
+    private void startNewActivity(boolean loggedIn){
+        Intent intent;
+        if (!loggedIn)
+            intent = new Intent(this, MainActivity.class);
+        else
+            intent = new Intent (this, CourseView.class);
         startActivity(intent);
     }
-    private void didntLogIn(){
 
-    }
-
+    @SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;
-        String[] gpaArray;
-        CourseDataObject[] courseDataObjects;
+        boolean loggedIn = false;
 
         Content(MainActivity mainActivity){
             this.mainActivity = mainActivity;
@@ -79,9 +78,8 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 Login.login(password, email);
+                loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return null;
@@ -89,11 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            //if (loggedIn)
-                mainActivity.startNewActivity(gpaArray, courseDataObjects);
-            //else
-               // mainActivity.didntLogIn();
-
+            mainActivity.startNewActivity(loggedIn);
             super.onPostExecute(aVoid);
         }
 
