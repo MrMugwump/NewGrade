@@ -60,6 +60,10 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
 
     public void GoBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        DataHolder.setLoginAutomatically(false);
+        //SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        //sharedPreferences.edit().putString("Failsafe", "don't continue").apply();
+        //Log.d("otherThing", "GoBack: " + sharedPreferences.getString("Failsafe", null));
         startActivity(intent);
     }
 

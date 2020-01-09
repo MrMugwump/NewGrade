@@ -1,6 +1,8 @@
 package com.example.whywontitwork.SyenrgyParsing;
 
 
+import android.util.Log;
+
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 
 import org.jsoup.nodes.Document;
@@ -13,6 +15,7 @@ class GradeBookOrganizer {
                 new CourseDataObject(), new CourseDataObject(), new CourseDataObject(), new CourseDataObject(),
                 new CourseDataObject(), new CourseDataObject(), new CourseDataObject(), new CourseDataObject()
         }; //it doesn't like it if I don't declare all of these
+        //Log.d("Thingylol", "fillDataArray: " + courseDataObjects.length);
 
         // HTML path selector that grabs the data table that contains all other required data
         Elements dataTable = gradeBookPage.select("#ctl00_ctl00_MainContent_PXPMainContent_repSchoolClasses_ctl00_ctl00_SchoolClassesPanel > table");

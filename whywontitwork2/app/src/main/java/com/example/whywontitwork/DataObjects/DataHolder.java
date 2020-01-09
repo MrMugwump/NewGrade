@@ -7,9 +7,18 @@ public class DataHolder {
     private static String[] gpaArray;
     private static Document doc;
     private static int courseChosen;
+    private static boolean loginAutomatically = true;
 
     public static int getCourseChosen() {
         return courseChosen;
+    }
+
+    public static boolean isLoginAutomatically() {
+        return loginAutomatically;
+    }
+
+    public static void setLoginAutomatically(boolean loginAutomatically) {
+        DataHolder.loginAutomatically = loginAutomatically;
     }
 
     public static void setCourseChosen(int courseChosen) {

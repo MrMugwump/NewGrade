@@ -5,28 +5,59 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     String email;
     String password;
+    String failsafe = "don't continue";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        sharedPreferences.getString("Email", null);
+        final SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        if (sharedPreferences.getString("Failsafe", null) != null)
+            failsafe = sharedPreferences.getString("Failsafe", null);
+
+        Log.d("thing", "onCreate: " + sharedPreferences.getString("Failsafe", null));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Objects.equals(sharedPreferences.getString("LogInAutomatically", null), String.valueOf(true))){
+                if (!failsafe.equals("don't continue") && DataHolder.isLoginAutomatically()) {
+                    email = sharedPreferences.getString("Email", null);
+                    password = sharedPreferences.getString("Password", null);
+                    Content content = new Content(this);
+                    content.execute();
+                    return;
+                }
+            }
+        }
+
+        Switch toggle = findViewById(R.id.switch3);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sharedPreferences.edit()
+                        .putString("LogInAutomatically", String.valueOf(isChecked))
+                        .apply();
+            }
+        });
     }
 
     public void checkForIfYouCanLogin(View view) {
@@ -50,10 +81,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void startNewActivity(boolean loggedIn){
         Intent intent;
-        if (!loggedIn)
+        if (!loggedIn) {
             intent = new Intent(this, MainActivity.class);
-        else
-            intent = new Intent (this, CourseView.class);
+            SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+            sharedPreferences.edit().putString("Failsafe", "don't continue").apply();
+        }
+        else {
+            intent = new Intent(this, CourseView.class);
+            SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+            sharedPreferences.edit().putString("Failsafe", "continue").apply();
+        }
+
         startActivity(intent);
     }
 
