@@ -5,8 +5,6 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
 
-import io.paperdb.Paper;
-
 /**
  * Implementation of App Widget functionality.
  */
@@ -15,14 +13,10 @@ public class NewGradeWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        Paper.init(context);
-
-
-
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_grade_widget);
-        //views.setTextViewText(R.id.appwidget_text, widgetText);
+        views.setTextViewText(R.id.textView5, widgetText);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
