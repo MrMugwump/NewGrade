@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 import com.example.whywontitwork.DataObjects.DataHolder;
 
+import io.paperdb.Paper;
+
 public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     
     @Override
@@ -103,6 +105,10 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
                break;
 
         }
+        Paper.init(this);
+        Paper.book(DataHolder.getCourseDataObjects()[menuItem.getItemId()].courseName);
+        Paper.book(DataHolder.getCourseDataObjects()[menuItem.getItemId()].gradeScore);
+        Paper.book(DataHolder.getCourseDataObjects()[menuItem.getItemId()].teacherName);
         Toast.makeText(this, "Period chosen for widget: " + DataHolder.getCourseChosen(), Toast.LENGTH_SHORT).show();
         return false;
     }
