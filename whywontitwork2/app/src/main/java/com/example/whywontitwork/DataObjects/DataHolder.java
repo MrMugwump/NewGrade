@@ -9,6 +9,16 @@ public class DataHolder {
     private static int courseChosen;
     private static boolean loginAutomatically = true;
 
+    public static boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public static void setLoggedIn(boolean loggedIn) {
+        DataHolder.loggedIn = loggedIn;
+    }
+
+    private static boolean loggedIn = false;
+
     public static int getCourseChosen() {
         return courseChosen;
     }

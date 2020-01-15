@@ -1,4 +1,6 @@
 package com.example.whywontitwork.SyenrgyParsing;
+import android.util.Log;
+
 import com.example.whywontitwork.DataObjects.DataHolder;
 
 import org.jsoup.*;
@@ -6,11 +8,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class Login {
 
 
-    public static void login(String password, String id) throws IOException {
+    public static void login(String password, String id) throws IOException, InterruptedException {
 
         Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
                 .method(Connection.Method.GET)
@@ -41,9 +44,12 @@ public class Login {
 
         String HomePageHtml = doc.toString();
         DataHolder.setDoc(doc);
-
+        Log.d("what", "login: " +doc.toString());
+        //TimeUnit.SECONDS.sleep(4);
+        DataHolder.setLoginAutomatically(checkLogin(doc));
         if(!checkLogin(doc)) //Checks if you logged in before running anything else
             return;
+
 
         ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
@@ -56,6 +62,7 @@ public class Login {
     }
 
     public static boolean checkLogin(Document doc) {
+        Log.d("whut", "checkLogin: REEEEE");
         return !doc.toString().contains("Return to common login");
     }
 

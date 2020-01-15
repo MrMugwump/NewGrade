@@ -1,5 +1,7 @@
 package com.example.whywontitwork;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
             failsafe = sharedPreferences.getString("Failsafe", null);
 
         Log.d("thing", "onCreate: " + sharedPreferences.getString("Failsafe", null));
+
+        String accountType = "I'm guessing atm";
+
+        AccountManager accountManager = AccountManager.get(this);
+
+        //final Account account = new Account(email, accountType);
+        //accountManager.addAccountExplicitly(account, password, null);
+        //account
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Objects.equals(sharedPreferences.getString("LogInAutomatically", null), String.valueOf(true))){
@@ -84,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
         if (!loggedIn) {
             intent = new Intent(this, MainActivity.class);
             SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+            Toast.makeText(this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
             sharedPreferences.edit().putString("Failsafe", "don't continue").apply();
         }
         else {
@@ -95,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
+    //@SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;
@@ -115,9 +127,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
+                Log.d("eew", "doInBackground: " + password);
+                Log.d("gross", "doInBackground: " + email);
                 Login.login(password, email);
                 loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return null;
