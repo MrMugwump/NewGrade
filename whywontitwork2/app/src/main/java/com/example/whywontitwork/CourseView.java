@@ -2,6 +2,7 @@ package com.example.whywontitwork;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -106,9 +107,10 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
 
         }
         Paper.init(this);
-        Paper.book(DataHolder.getCourseDataObjects()[menuItem.getItemId()].courseName);
-        Paper.book(DataHolder.getCourseDataObjects()[menuItem.getItemId()].gradeScore);
-        Paper.book(DataHolder.getCourseDataObjects()[menuItem.getItemId()].teacherName);
+        Log.d("thing", "onMenuItemClick: "+DataHolder.getCourseDataObjects().length);
+        Paper.book().write("coursename", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].courseName);
+        Paper.book().write("grade", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].gradeScore);
+        Paper.book().write("teacher", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].teacherName);
         Toast.makeText(this, "Period chosen for widget: " + DataHolder.getCourseChosen(), Toast.LENGTH_SHORT).show();
         return false;
     }

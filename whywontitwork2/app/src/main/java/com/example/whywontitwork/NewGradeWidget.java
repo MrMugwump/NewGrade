@@ -1,8 +1,10 @@
 package com.example.whywontitwork;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.RemoteViews;
 
 import io.paperdb.Paper;
@@ -17,10 +19,37 @@ public class NewGradeWidget extends AppWidgetProvider {
 
         Paper.init(context);
 
+        String courseName = Paper.book().read("coursename");
+        String teacherName = Paper.book().read("teacher");
+        String grade = Paper.book().read("grade");
+
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_grade_widget);
-        views.setTextViewText(R.id.textView5, widgetText);
+        views.setTextViewText(R.id.widgetGrade, grade);
+        views.setTextViewText(R.id.widgetCourseName, courseName);
+        views.setTextViewText(R.id.widgetTeacherName, teacherName);
+
+        //Create an Intent with the AppWidgetManager.ACTION_APPWIDGET_UPDATE action//
+
+        Intent intentUpdate = new Intent(context, NewGradeWidget.class);
+        intentUpdate.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+
+        //Update the current widget instance only, by creating an array that contains the widget’s unique ID//
+
+        int[] idArray = new int[]{appWidgetId};
+        intentUpdate.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, idArray);
+
+        //Wrap the intent as a PendingIntent, using PendingIntent.getBroadcast()//
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                context, appWidgetId, intentUpdate,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        //Send the pending intent in response to the user tapping the ‘Update’ TextView//
+
+        views.setOnClickPendingIntent(R.id.widgetUpdateButton, pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

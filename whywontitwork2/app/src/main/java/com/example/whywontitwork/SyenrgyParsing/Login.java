@@ -44,7 +44,7 @@ public class Login {
 
         String HomePageHtml = doc.toString();
         DataHolder.setDoc(doc);
-        Log.d("what", "login: " +doc.toString());
+        //Log.d("what", "login: " +doc.toString());
         //TimeUnit.SECONDS.sleep(4);
         DataHolder.setLoginAutomatically(checkLogin(doc));
         if(!checkLogin(doc)) //Checks if you logged in before running anything else

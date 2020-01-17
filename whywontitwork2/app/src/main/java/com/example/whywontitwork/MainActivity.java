@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         if (!loggedIn) {
             intent = new Intent(this, MainActivity.class);
             SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-            Toast.makeText(this, "Invalid Login Credentials", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Failed Login", Toast.LENGTH_SHORT).show();
             sharedPreferences.edit().putString("Failsafe", "don't continue").apply();
         }
         else {
@@ -93,11 +93,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
+    //@SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;
         boolean loggedIn = false;
+        ProgressDialog progressDialog;
 
         Content(MainActivity mainActivity){
             this.mainActivity = mainActivity;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog = new ProgressDialog(MainActivity.this);
             progressDialog.show();
         }
 
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             mainActivity.startNewActivity(loggedIn);
+            progressDialog.dismiss();
             super.onPostExecute(aVoid);
         }
 
