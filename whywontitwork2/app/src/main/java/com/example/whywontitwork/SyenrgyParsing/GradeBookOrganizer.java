@@ -31,6 +31,8 @@ class GradeBookOrganizer {
 
         for (int i = 0; i < 8; i++) {
             courseDataObjects[i].courseName = courseTitles.get(i).text();
+            courseDataObjects[i].courseName =  courseDataObjects[i].courseName.substring(3); //gets rid of first three letters, which has the period in it
+
             courseDataObjects[i].teacherName = teacherNames.get(i).text();
             courseDataObjects[i].room = roomNumbers.get(i).text();
             courseDataObjects[i].gradeLetter = gradeLetters.get(i).text();

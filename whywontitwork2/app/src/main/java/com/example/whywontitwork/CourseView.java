@@ -32,7 +32,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
         final String[] gpa = DataHolder.getGpaArray();
         final CourseDataObject[] courseDataObjects = DataHolder.getCourseDataObjects();
 
-        changeStrings(gpa, courseDataObjects);
+        setUpUI(gpa, courseDataObjects);
 
         final TextView textView = findViewById(R.id.GPA);
 
@@ -44,12 +44,13 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
         });
     }
 
-    private void changeStrings(String[] gpa, CourseDataObject[] courseDataObjects){
+    private void setUpUI(String[] gpa, CourseDataObject[] courseDataObjects){
         TextView textView = findViewById(R.id.GPA);
         Switch toggle = findViewById(R.id.gpaSwitch);
         changeGPAText(textView, toggle.isChecked(), gpa); //Sets gpa text
 
-        UpdateUI.changeTextviews(this, courseDataObjects);
+        UpdateUI.changeUIObjects(this, courseDataObjects);
+
 
         
     }
@@ -111,7 +112,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
         Paper.book().write("coursename", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].courseName);
         Paper.book().write("grade", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].gradeScore);
         Paper.book().write("teacher", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].teacherName);
-        Toast.makeText(this, "Period chosen for widget: " + DataHolder.getCourseChosen(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Period chosen for widget: " + (DataHolder.getCourseChosen()+1), Toast.LENGTH_SHORT).show();
         return false;
     }
 }

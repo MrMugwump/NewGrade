@@ -725,7 +725,7 @@
                     app:srcCompat="@drawable/b" />
 
                 <ImageView
-                    android:id="@+id/periodThreeLetter5"
+                    android:id="@+id/periodEightLetter"
                     android:layout_width="70dp"
                     android:layout_height="43dp"
                     android:contentDescription="@string/letter"

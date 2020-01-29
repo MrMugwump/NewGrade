@@ -1,12 +1,19 @@
 package com.example.whywontitwork;
 
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 
 public class UpdateUI {
-    public static void changeTextviews(CourseView courseView, CourseDataObject[] courseDataObjects){
+    static void changeUIObjects(CourseView courseView, CourseDataObject[] courseDataObjects){
+        changeTextViews(courseView, courseDataObjects);
+        changeGradeImages(courseView, courseDataObjects);
+    }
+    private static void changeTextViews(CourseView courseView, CourseDataObject[] courseDataObjects){
         TextView textView = courseView.findViewById(R.id.GPA);
         Switch toggle = courseView.findViewById(R.id.gpaSwitch);
 
@@ -72,6 +79,32 @@ public class UpdateUI {
         courseName.setText(courseDataObject.courseName);
         teacherName.setText(courseDataObject.teacherName);
         roomNumber.setText(courseDataObject.room);
+    }
+
+    private static void changeGradeImages(CourseView courseView, CourseDataObject[] courseDataObjects){
+        ImageView[] gradeLetters = new ImageView[] {courseView.findViewById(R.id.periodOneLetter), courseView.findViewById(R.id.periodTwoLetter),
+                courseView.findViewById(R.id.periodThreeLetter), courseView.findViewById(R.id.periodFourLetter),
+                courseView.findViewById(R.id.periodFiveLetter), courseView.findViewById(R.id.periodSixLetter),
+                courseView.findViewById(R.id.periodSevenLetter), courseView.findViewById(R.id.periodEightLetter)};
+        for (int i = 0; i < gradeLetters.length; i++) {
+            switch (courseDataObjects[i].gradeLetter){
+                case "A":
+                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.a));
+                    break;
+                case "B":
+                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.b));
+                    break;
+                case "C":
+                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.c));
+                    break;
+                case "D":
+                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.d));
+                    break;
+                default:
+                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.f));
+                    break;
+            }
+        }
     }
     
 }
