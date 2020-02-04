@@ -100,8 +100,10 @@ public class UpdateUI {
                 case "D":
                     gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.d));
                     break;
-                default:
+                case "F":
                     gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.f));
+                default:
+                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.na));
                     break;
             }
         }
