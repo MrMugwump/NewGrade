@@ -1,21 +1,18 @@
 package com.example.whywontitwork;
 
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 
-public class UpdateUI {
+class UpdateUI {
     static void changeUIObjects(CourseView courseView, CourseDataObject[] courseDataObjects){
         changeTextViews(courseView, courseDataObjects);
         changeGradeImages(courseView, courseDataObjects);
     }
     private static void changeTextViews(CourseView courseView, CourseDataObject[] courseDataObjects){
-        TextView textView = courseView.findViewById(R.id.GPA);
-        Switch toggle = courseView.findViewById(R.id.gpaSwitch);
 
         TextView courseGrade = courseView.findViewById(R.id.periodOneGrade);
         TextView courseName = courseView.findViewById(R.id.periodOneName);
@@ -76,6 +73,8 @@ public class UpdateUI {
     }
     private static void changeCourseText(TextView grade, TextView courseName, TextView teacherName, TextView roomNumber, CourseDataObject courseDataObject){
         grade.setText(courseDataObject.gradeScore);
+        if (courseDataObject.courseName.length() >= 23)
+            courseName.setTextSize(11f);
         courseName.setText(courseDataObject.courseName);
         teacherName.setText(courseDataObject.teacherName);
         roomNumber.setText(courseDataObject.room);
