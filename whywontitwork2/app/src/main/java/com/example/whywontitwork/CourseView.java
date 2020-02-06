@@ -57,9 +57,9 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
     
     private void changeGPAText(TextView textView, boolean isChecked, String[] gpa){
         if (isChecked)
-            textView.setText("Weighted " + gpa[1]); //Change this later so it doesn't yell at me.
+            textView.setText("Unweighted " + gpa[0]); //Change this later so it doesn't yell at me.
         else
-            textView.setText("Unweighted " + gpa[0]);
+            textView.setText("Weighted " + gpa[1]);
     }
 
     public void GoBack(View view){

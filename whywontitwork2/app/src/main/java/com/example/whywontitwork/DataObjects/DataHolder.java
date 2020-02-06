@@ -25,7 +25,6 @@ public class DataHolder {
         DataHolder.courseChosen = courseChosen;
     }
 
-
     public static Document getDoc() {
         return doc;
     }
