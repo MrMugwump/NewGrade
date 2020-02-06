@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/quicksand_light"
-        android:onClick="checkForIfYouCanLogin"
+        android:onClick="attemptToLogin"
         android:text="@string/loginButton"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintHorizontal_bias="0.504"

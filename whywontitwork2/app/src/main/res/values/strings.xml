@@ -37,5 +37,6 @@
     <string name="periodSevenOption">Period Seven</string>
     <string name="periodEightOption">Period Eight</string>
     <string name="backButton"><![CDATA[<---]]></string>
-
+    <string name="gpaWeighted">Weighted: %2$s</string>
+    <string name="gpaUnweighted">Unweighted: %2$s</string>
 </resources>

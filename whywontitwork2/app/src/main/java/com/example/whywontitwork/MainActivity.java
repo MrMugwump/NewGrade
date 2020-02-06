@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void checkForIfYouCanLogin(View view) {
+    public void attemptToLogin(View view) {
         EditText emailField = findViewById(R.id.emailForm);
         email = emailField.getText().toString();
         EditText passwordField = findViewById(R.id.passwordForm);
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //@SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
+    //unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;
@@ -116,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
                 Login.login(password, email);
                 loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return null;

@@ -8,12 +8,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class Login {
 
 
-    public static void login(String password, String id) throws IOException, InterruptedException {
+    public static void login(String password, String id) throws IOException{
 
         Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
                 .method(Connection.Method.GET)
@@ -55,14 +54,15 @@ public class Login {
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-
         DataHolder.setCourseDataObjects(GradeBookOrganizer.fillDataArray(GradeBookPage)); //Stores data as a static reference.
+        if (DataHolder.getCourseDataObjects().length == 0)
+            Log.d("Login error", "login: no data pulled from synergy");
         DataHolder.setGpaArray(GpaParse.gpaParse(loginForm));
 
     }
 
     public static boolean checkLogin(Document doc) {
-        Log.d("whut", "checkLogin: REEEEE");
+        //Log.d("whut", "checkLogin: REEEEE");
         return !doc.toString().contains("Return to common login");
     }
 
