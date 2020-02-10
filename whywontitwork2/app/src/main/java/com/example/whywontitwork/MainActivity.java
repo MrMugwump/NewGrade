@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         EditText passwordField = findViewById(R.id.passwordForm);
         password = passwordField.getText().toString();
 
+
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("Email", email);
@@ -92,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //@SuppressLint("StaticFieldLeak") //Gets rid of an unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
+    //unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
+
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;

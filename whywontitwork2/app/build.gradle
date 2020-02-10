@@ -30,4 +30,5 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.9.2'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "io.paperdb:paperdb:2.5"
+    compile 'com.google.code.gson:gson:2.3.1'
 }
