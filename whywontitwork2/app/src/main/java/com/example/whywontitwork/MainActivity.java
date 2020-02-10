@@ -24,8 +24,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    String email;
-    String password;
+
     String failsafe = "don't continue";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Objects.equals(sharedPreferences.getString("LogInAutomatically", null), String.valueOf(true))){
                 if (!failsafe.equals("don't continue") && DataHolder.isLoginAutomatically()) {
-                    email = sharedPreferences.getString("Email", null);
-                    password = sharedPreferences.getString("Password", null);
-                    Content content = new Content(this);
+                    String email = sharedPreferences.getString("Email", null);
+                    String password = sharedPreferences.getString("Password", null);
+                    Content content = new Content(this, email, password);
                     content.execute();
                     return;
                 }
@@ -58,12 +57,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void checkForIfYouCanLogin(View view) {
+    public void attemptToLogin(View view) {
         EditText emailField = findViewById(R.id.emailForm);
-        email = emailField.getText().toString();
+        String email = emailField.getText().toString();
         EditText passwordField = findViewById(R.id.passwordForm);
-        password = passwordField.getText().toString();
+        String password = passwordField.getText().toString();
 
+        Content content = new Content(this, email, password);
+        content.execute();
+
+    }
+
+    private void storeCredentials(){
+        EditText emailField = findViewById(R.id.emailForm);
+        String email = emailField.getText().toString();
+        EditText passwordField = findViewById(R.id.passwordForm);
+        String password = passwordField.getText().toString();
 
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -72,10 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
         editor.putString("Password", password); //Saves Password and id, so we could log in automatically later.
         editor.apply();
-
-        Content content = new Content(this);
-        content.execute();
-
     }
 
     private void startNewActivity(boolean loggedIn){
@@ -90,38 +95,42 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(this, CourseView.class);
             SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
             sharedPreferences.edit().putString("Failsafe", "continue").apply();
+            storeCredentials();
         }
 
         startActivity(intent);
     }
 
     //unavoidable warning thingy that wants us to make this class static. But we can't do that because we have to use a callback
-
     private class Content extends AsyncTask<Void, Void, Void> { //This allows the app to actually surf the internet in th background
 
         MainActivity mainActivity;
         boolean loggedIn = false;
         ProgressDialog progressDialog;
+        String id;
+        String password;
 
-        Content(MainActivity mainActivity){
+        Content(MainActivity mainActivity, String id, String password){
             this.mainActivity = mainActivity;
+            this.id = id;
+            this.password = password;
         }
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Setting Up");
             progressDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                Login.login(password, email);
+                progressDialog.setMessage("Logging In");
+                Login.login(password, id);
                 loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             return null;

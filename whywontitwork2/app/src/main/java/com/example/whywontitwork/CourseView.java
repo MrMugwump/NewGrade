@@ -57,17 +57,14 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
     
     private void changeGPAText(TextView textView, boolean isChecked, String[] gpa){
         if (isChecked)
-            textView.setText("Weighted " + gpa[1]); //Change this later so it doesn't yell at me.
+            textView.setText("Unweighted " + gpa[0]); //Change this later so it doesn't yell at me.
         else
-            textView.setText("Unweighted " + gpa[0]);
+            textView.setText("Weighted " + gpa[1]);
     }
 
     public void GoBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
         DataHolder.setLoginAutomatically(false);
-        //SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        //sharedPreferences.edit().putString("Failsafe", "don't continue").apply();
-        //Log.d("otherThing", "GoBack: " + sharedPreferences.getString("Failsafe", null));
         startActivity(intent);
     }
 
@@ -105,6 +102,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
             default:
                DataHolder.setCourseChosen(0);
                break;
+
 
         }
         Paper.init(this);
