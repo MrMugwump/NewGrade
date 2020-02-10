@@ -36,10 +36,10 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
 
         final TextView textView = findViewById(R.id.GPA);
 
-        Switch toggle = findViewById(R.id.gpaSwitch);
+        final Switch toggle = findViewById(R.id.gpaSwitch);
         toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                changeGPAText(textView, isChecked, gpa);
+                changeGPAText(textView, isChecked, gpa, toggle);
             }
         });
     }
@@ -47,7 +47,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
     private void setUpUI(String[] gpa, CourseDataObject[] courseDataObjects){
         TextView textView = findViewById(R.id.GPA);
         Switch toggle = findViewById(R.id.gpaSwitch);
-        changeGPAText(textView, toggle.isChecked(), gpa); //Sets gpa text
+        changeGPAText(textView, toggle.isChecked(), gpa, toggle); //Sets gpa text
 
         UpdateUI.changeUIObjects(this, courseDataObjects);
 
@@ -55,11 +55,15 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
         
     }
     
-    private void changeGPAText(TextView textView, boolean isChecked, String[] gpa){
-        if (isChecked)
-            textView.setText("Unweighted " + gpa[0]); //Change this later so it doesn't yell at me.
-        else
+    private void changeGPAText(TextView textView, boolean isChecked, String[] gpa, Switch toggle){
+        if (isChecked) {
+            textView.setText("Unweighted " + gpa[0]);
+            toggle.setText("Weighted");
+        }//Change this later so it doesn't yell at me.
+        else {
             textView.setText("Weighted " + gpa[1]);
+            toggle.setText("Unweighted");
+        }
     }
 
     public void GoBack(View view){
