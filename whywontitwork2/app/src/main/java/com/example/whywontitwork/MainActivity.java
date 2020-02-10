@@ -118,12 +118,14 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(MainActivity.this);
+            progressDialog.setMessage("Setting Up");
             progressDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             try {
+                progressDialog.setMessage("Logging In");
                 Login.login(password, id);
                 loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {

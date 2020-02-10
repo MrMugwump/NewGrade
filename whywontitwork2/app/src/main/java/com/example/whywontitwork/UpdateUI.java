@@ -74,7 +74,9 @@ class UpdateUI {
     private static void changeCourseText(TextView grade, TextView courseName, TextView teacherName, TextView roomNumber, CourseDataObject courseDataObject){
         grade.setText(courseDataObject.gradeScore);
         if (courseDataObject.courseName.length() >= 23)
-            courseName.setTextSize(11f);
+            courseName.setTextSize(10f);
+        else if (courseDataObject.courseName.length() >= 20)
+            courseName.setTextSize(13f);
         courseName.setText(courseDataObject.courseName);
         teacherName.setText(courseDataObject.teacherName);
         roomNumber.setText(courseDataObject.room);

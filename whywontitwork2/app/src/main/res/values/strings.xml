@@ -5,14 +5,14 @@
     <string name="courseGrade">Grade</string>
     <string name="teacherName">Teacher Name</string>
     <string name="RoomNumber">Rm. %1$d</string>
-    <string name="PeriodOne">1</string>
+    <string name="PeriodOne">Period 1</string>
     <string name="periodTwo">2</string>
     <string name="periodThree">3</string>
     <string name="periodFour">4</string>
     <string name="periodFive">5</string>
     <string name="periodSix">6</string>
     <string name="periodSeven">7</string>
-    <string name="periodEight">8</string>
+    <string name="periodEight">Period Eight</string>
     <string name="nightMode">Night Mode</string>
     <string name="lightMode">Light Mode</string>
     <string name="letter">This is the letter grade</string>
@@ -36,7 +36,7 @@
     <string name="periodSixOption">Period Six</string>
     <string name="periodSevenOption">Period Seven</string>
     <string name="periodEightOption">Period Eight</string>
-    <string name="backButton"><![CDATA[<---]]></string>
+    <string name="backButton">Log Out</string>
     <string name="gpaWeighted">Weighted: %2$s</string>
     <string name="gpaUnweighted">Unweighted: %2$s</string>
 </resources>
