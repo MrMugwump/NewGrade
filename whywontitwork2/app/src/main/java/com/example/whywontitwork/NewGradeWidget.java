@@ -23,7 +23,9 @@ public class NewGradeWidget extends AppWidgetProvider {
         String teacherName = Paper.book().read("teacher");
         String grade = Paper.book().read("grade");
 
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
+        if (courseName.length() > 16){
+            courseName = courseName.substring(0,16) + "...";
+        }
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_grade_widget);
         views.setTextViewText(R.id.widgetGrade, grade);

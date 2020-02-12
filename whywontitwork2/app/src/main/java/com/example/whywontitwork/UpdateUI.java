@@ -75,7 +75,7 @@ class UpdateUI {
         int nameLengthLimit = 16;
         String courseTitle = courseDataObject.courseName;
 
-        if (courseDataObject.courseName.length() >= nameLengthLimit){
+        if (courseDataObject.courseName.length() > nameLengthLimit){
              courseTitle = courseDataObject.courseName.substring(0,nameLengthLimit) + "...";
         }
         courseName.setText(courseTitle);
