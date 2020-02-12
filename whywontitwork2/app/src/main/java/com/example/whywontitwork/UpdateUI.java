@@ -72,9 +72,11 @@ class UpdateUI {
 
     }
     private static void changeCourseText(TextView grade, TextView courseName, TextView teacherName, TextView roomNumber, CourseDataObject courseDataObject){
+        int nameLengthLimit = 16;
         String courseTitle = courseDataObject.courseName;
-        if (courseDataObject.courseName.length() >= 16){
-             courseTitle = courseDataObject.courseName.substring(0,16) + "...";
+
+        if (courseDataObject.courseName.length() >= nameLengthLimit){
+             courseTitle = courseDataObject.courseName.substring(0,nameLengthLimit) + "...";
         }
         courseName.setText(courseTitle);
         grade.setText(courseDataObject.gradeScore);
