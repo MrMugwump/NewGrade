@@ -31,6 +31,7 @@ public class NewGradeWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widgetGrade, grade);
         views.setTextViewText(R.id.widgetCourseName, courseName);
         views.setTextViewText(R.id.widgetTeacherName, teacherName);
+        views.setImageViewResource(R.id.widgetImageView, R.drawable.a);
 
         //Create an Intent with the AppWidgetManager.ACTION_APPWIDGET_UPDATE action//
 

@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,9 +14,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/quicksand_light"
         android:text="TextView"
         android:textColor="@color/colorSecondary" />
@@ -26,6 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/widgetGrade"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
@@ -37,16 +43,24 @@
 
     <Button
         android:id="@+id/widgetUpdateButton"
-        android:layout_width="56dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
         android:layout_below="@+id/widgetGrade"
         android:layout_alignStart="@+id/widgetGrade"
         android:layout_alignLeft="@+id/widgetGrade"
+        android:layout_alignEnd="@+id/widgetGrade"
+        android:layout_alignRight="@+id/widgetGrade"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_margin="8dp"
         android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner"
         android:fontFamily="@font/quicksand_light"
+        android:gravity="center"
         android:text="@string/updateButton" />
 
     <TextView
@@ -54,6 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/widgetCourseName"
+        android:layout_gravity="right"
+        android:layout_margin="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="0dp"
@@ -62,4 +78,12 @@
         android:fontFamily="@font/quicksand_light"
         android:text="TextView"
         android:textColor="@color/colorSecondary" />
-</RelativeLayout>
+
+    <ImageView
+        android:id="@+id/widgetImageView"
+        android:layout_width="94dp"
+        android:layout_height="72dp"
+        android:layout_gravity="left|center_vertical"
+        android:layout_margin="8dp"
+        tools:srcCompat="@tools:sample/avatars" />
+</FrameLayout>
