@@ -91,6 +91,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodOneOption"
                     app:layout_constraintTop_toBottomOf="@+id/periodOneNumber" />
 
@@ -149,6 +151,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodTwoOption"
                     app:layout_constraintTop_toBottomOf="@+id/periodTwoNumber" />
 
@@ -273,6 +277,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodThree"
                     app:layout_constraintTop_toBottomOf="@+id/periodThreeNumber" />
 
@@ -331,6 +337,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodFour"
                     app:layout_constraintTop_toBottomOf="@+id/periodFourNumber" />
 
@@ -454,6 +462,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodFive"
                     app:layout_constraintTop_toBottomOf="@+id/periodFiveNumber" />
 
@@ -512,6 +522,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodSix"
                     app:layout_constraintTop_toBottomOf="@+id/periodSixNumber" />
 
@@ -635,6 +647,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodSeven"
                     app:layout_constraintTop_toBottomOf="@+id/periodSevenNumber" />
 
@@ -693,6 +707,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/quicksand_light"
                     android:text="@string/courseName"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/periodEight"
                     app:layout_constraintTop_toBottomOf="@+id/periodEightNumber" />
 
