@@ -51,10 +51,14 @@ public class Login {
 
 
         ParseGradebookUrl StringParserForGradeBookUrl = new ParseGradebookUrl(HomePageHtml);
+
         String gradeBookUrl = StringParserForGradeBookUrl.createGradeBookUrl();
+
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
+
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
         DataHolder.setCourseDataObjects(GradeBookOrganizer.fillDataArray(GradeBookPage)); //Stores data as a static reference.
+
         if (DataHolder.getCourseDataObjects().length == 0)
             Log.d("Login error", "login: no data pulled from synergy");
         DataHolder.setGpaArray(GpaParse.gpaParse(loginForm));

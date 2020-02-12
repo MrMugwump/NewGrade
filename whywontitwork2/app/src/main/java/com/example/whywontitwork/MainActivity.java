@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.Objects;
