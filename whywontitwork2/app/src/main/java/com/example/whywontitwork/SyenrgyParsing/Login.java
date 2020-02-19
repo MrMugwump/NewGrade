@@ -2,6 +2,7 @@ package com.example.whywontitwork.SyenrgyParsing;
 import android.util.Log;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
+import com.example.whywontitwork.MainActivity;
 
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
@@ -12,7 +13,8 @@ import java.io.IOException;
 public class Login {
 
 
-    public static void login(String password, String id) throws IOException{
+    public static void login(String password, String id, MainActivity context) throws IOException{
+
 
         Connection.Response loginForm = Jsoup.connect("https://parent-portland.cascadetech.org/portland/PXP2_Login_Student.aspx?regenerateSessionId=True")
                 .method(Connection.Method.GET)
@@ -57,7 +59,22 @@ public class Login {
         GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
 
         Document GradeBookPage = GradeBookParse.ConnectToGradesPage(loginForm, gradeBookUrl);
-        DataHolder.setCourseDataObjects(GradeBookOrganizer.fillDataArray(GradeBookPage)); //Stores data as a static reference.
+
+
+        /*
+
+        Checks if there is Course info saved in SharedPreferences, and loads it if it is present. If not present connects to synergy and resaves it
+
+         */
+        if (DataCaching.getSharedPreferences(context).contains("courseCache")){
+            DataHolder.setCourseDataObjects(DataCaching.readFromCache(context,"courseCache"));
+        }
+        else{
+            DataHolder.setCourseDataObjects(GradeBookOrganizer.fillDataArray(GradeBookPage)); //Stores data as a static reference.
+            DataCaching.getSharedPreferences(context).edit().remove("courseCache").commit();
+            DataCaching.saveToCache(context,"courseCache");
+        }
+
 
         if (DataHolder.getCourseDataObjects().length == 0)
             Log.d("Login error", "login: no data pulled from synergy");
