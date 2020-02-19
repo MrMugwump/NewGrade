@@ -1,5 +1,6 @@
 package com.example.whywontitwork;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,9 @@ class UpdateUI {
         changeGradeImages(courseView, courseDataObjects);
     }
     private static void changeTextViews(CourseView courseView, CourseDataObject[] courseDataObjects){
+
+        View view = courseView.findViewById(R.id.periodOneAndTwo);
+        view.findViewById(R.id.first_course_block);
 
         TextView courseGrade = courseView.findViewById(R.id.periodOneGrade);
         TextView courseName = courseView.findViewById(R.id.periodOneName);
@@ -71,7 +75,10 @@ class UpdateUI {
         changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[7]);
 
     }
-    private static void changeCourseText(TextView grade, TextView courseName, TextView teacherName, TextView roomNumber, CourseDataObject courseDataObject){
+    private static void changeCourseText(View view, CourseDataObject firstCourse, CourseDataObject secondCourse){
+        (View) view.findViewById(R.id.first);
+
+
         int nameLengthLimit = 16;
         String courseTitle = courseDataObject.courseName;
 

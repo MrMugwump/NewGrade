@@ -39,4 +39,5 @@
     <string name="backButton">Log Out</string>
     <string name="gpaWeighted">Weighted: %2$s</string>
     <string name="gpaUnweighted">Unweighted: %2$s</string>
+    <string name="Period">Period</string>
 </resources>
