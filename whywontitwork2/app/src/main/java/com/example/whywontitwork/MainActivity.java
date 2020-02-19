@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 progressDialog.setMessage("Logging In");
-                Login.login(password, id);
+                Login.login(password, id, MainActivity.this);
                 loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {
                 e.printStackTrace();
