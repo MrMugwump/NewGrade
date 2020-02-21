@@ -22,8 +22,7 @@ class DataCaching {
             String writeValue = mGson.toJson(DataHolder.getCourseDataObjects());
             editor.putString(courseCache, writeValue);
             editor.commit();
-            Log.d("DataCaching", "saveToCache: Save Completed ");
-            System.out.println(writeValue);
+            Log.d("DataCaching", "saveToCache: CourseInfoSave Completed ");
             return true;
         }
         catch(Exception e)
@@ -33,15 +32,46 @@ class DataCaching {
         }
     }
 
-     static CourseDataObject[] readFromCache(MainActivity context, String courseCache) {
+    static boolean saveGPAInfo(MainActivity context, String gPACacheOne, String gPACacheTwo){
          SharedPreferences sharedPreferences = context.getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        String loadValue = sharedPreferences.getString(courseCache, "");
-        CourseDataObject[] holderOfTheData = mGson.fromJson(loadValue, CourseDataObject[].class);
-         Log.d("DataCaching", "readFromCache: Copied Data from cache");
+         SharedPreferences.Editor editor = sharedPreferences.edit();
+         try{
+             String writeValue1 = DataHolder.getGpaArray()[0];
+             String writeValue2 = DataHolder.getGpaArray()[1];
+             editor.putString(gPACacheOne, writeValue1);
+             editor.putString(gPACacheTwo,writeValue2);
+             editor.commit();
+
+             return true;
+         }
+         catch(Exception e){
+             Log.d("Cache Error", "saveGPAInfo: Failed");
+             return false;
+        }
+     }
+
+
+    static CourseDataObject[] readCourseInfoFromCache(MainActivity context, String courseCache) {
+         SharedPreferences sharedPreferences = context.getPreferences(MODE_PRIVATE);
+         SharedPreferences.Editor editor = sharedPreferences.edit();
+         String loadValue = sharedPreferences.getString(courseCache, "");
+         CourseDataObject[] holderOfTheData = mGson.fromJson(loadValue, CourseDataObject[].class);
+         Log.d("DataCaching", "readCourseInfoFromCache: Copied Data from cache");
          return holderOfTheData;
+     }
+    static String[] readGPAInfoFromCache(MainActivity context, String gPACacheOne,String gPACacheTwo){
+        SharedPreferences sharedPreferences = context.getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String loadValueOne = sharedPreferences.getString(gPACacheOne, "");
+        String loadValueTwo = sharedPreferences.getString(gPACacheTwo, "");
+        String[] holderOfTheData = new String[2];
+        holderOfTheData[0] = loadValueOne;
+        holderOfTheData[1] = loadValueTwo;
+        return holderOfTheData;
     }
-    static SharedPreferences getSharedPreferences(MainActivity context){
+
+
+     static SharedPreferences getSharedPreferences(MainActivity context){
         return  context.getPreferences(MODE_PRIVATE);
     }
 
