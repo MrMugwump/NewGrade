@@ -1,4 +1,5 @@
 package com.example.whywontitwork.SyenrgyParsing;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
@@ -66,19 +67,29 @@ public class Login {
         Checks if there is Course info saved in SharedPreferences, and loads it if it is present. If not present connects to synergy and resaves it
 
          */
+        if(DataCaching.getSharedPreferences(context).contains("gPACacheOne")){
+            DataHolder.setGpaArray(DataCaching.readGPAInfoFromCache(context, "gPACacheOne","GpaCacheTwo"));
+
+        }
+        else{
+            DataHolder.setGpaArray(GpaParse.gpaParse(loginForm));
+            DataCaching.getSharedPreferences(context).edit().remove("gPACacheOne").commit();
+            DataCaching.getSharedPreferences(context).edit().remove("GpaCacheTwo").commit();
+            DataCaching.saveGPAInfo(context, "gPACacheOne", "GpaCacheTwo");
+        }
+
+
         if (DataCaching.getSharedPreferences(context).contains("courseCache")){
-            DataHolder.setCourseDataObjects(DataCaching.readFromCache(context,"courseCache"));
+            DataHolder.setCourseDataObjects(DataCaching.readCourseInfoFromCache(context,"courseCache"));
         }
         else{
             DataHolder.setCourseDataObjects(GradeBookOrganizer.fillDataArray(GradeBookPage)); //Stores data as a static reference.
             DataCaching.getSharedPreferences(context).edit().remove("courseCache").commit();
             DataCaching.saveToCache(context,"courseCache");
         }
-
-
         if (DataHolder.getCourseDataObjects().length == 0)
             Log.d("Login error", "login: no data pulled from synergy");
-        DataHolder.setGpaArray(GpaParse.gpaParse(loginForm));
+
 
     }
 
