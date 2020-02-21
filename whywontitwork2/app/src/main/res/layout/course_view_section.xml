@@ -7,7 +7,7 @@
     android:background="@color/colorPrimary">
 
     <include
-        android:id="first_course_block"
+        android:id="@+id/first_course_block"
         layout="@layout/course_data_block"
         android:layout_height="match_parent"
         android:layout_width="151dp"
@@ -20,6 +20,7 @@
 
 
     <include
+        android:id="@+id/second_course_block"
         layout="@layout/course_data_block"
         android:layout_width="151dp"
         android:layout_height="match_parent"

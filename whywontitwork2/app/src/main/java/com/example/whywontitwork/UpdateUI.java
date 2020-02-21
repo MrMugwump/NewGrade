@@ -9,112 +9,76 @@ import androidx.core.content.ContextCompat;
 import com.example.whywontitwork.DataObjects.CourseDataObject;
 
 class UpdateUI {
-    static void changeUIObjects(CourseView courseView, CourseDataObject[] courseDataObjects){
-        changeTextViews(courseView, courseDataObjects);
-        changeGradeImages(courseView, courseDataObjects);
-    }
-    private static void changeTextViews(CourseView courseView, CourseDataObject[] courseDataObjects){
-
+    static void updateUI(CourseView courseView, CourseDataObject[] courseDataObjects){
         View view = courseView.findViewById(R.id.periodOneAndTwo);
-        view.findViewById(R.id.first_course_block);
+        CourseDataObject[] courses = new CourseDataObject[]{courseDataObjects[0], courseDataObjects[1]};
 
-        TextView courseGrade = courseView.findViewById(R.id.periodOneGrade);
-        TextView courseName = courseView.findViewById(R.id.periodOneName);
-        TextView teacherName = courseView.findViewById(R.id.periodOneTeacher);
-        TextView roomNumber = courseView.findViewById(R.id.periodOneRoom);
+        changeCourseObjects(courseView, view, courses);
 
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[0]);
+        view = courseView.findViewById(R.id.periodThreeAndFour);
+        courses = new CourseDataObject[]{courseDataObjects[2], courseDataObjects[3]};
 
-        courseGrade = courseView.findViewById(R.id.periodTwoGrade);
-        courseName = courseView.findViewById(R.id.periodTwoName);
-        teacherName = courseView.findViewById(R.id.periodTwoTeacher);
-        roomNumber = courseView.findViewById(R.id.periodTwoRoom);
+        changeCourseObjects(courseView, view, courses);
 
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[1]);
+        view = courseView.findViewById(R.id.periodFiveAndSix);
+        courses = new CourseDataObject[]{courseDataObjects[4], courseDataObjects[5]};
 
-        courseGrade = courseView.findViewById(R.id.periodThreeGrade);
-        courseName = courseView.findViewById(R.id.periodThreeName);
-        teacherName = courseView.findViewById(R.id.periodThreeTeacher);
-        roomNumber = courseView.findViewById(R.id.periodThreeRoom);
+        changeCourseObjects(courseView, view, courses);
 
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[2]);
+        view = courseView.findViewById(R.id.periodSevenAndEight);
+        courses = new CourseDataObject[]{courseDataObjects[6], courseDataObjects[7]};
 
-        courseGrade = courseView.findViewById(R.id.periodFourGrade);
-        courseName = courseView.findViewById(R.id.periodFourName);
-        teacherName = courseView.findViewById(R.id.periodFourTeacher);
-        roomNumber = courseView.findViewById(R.id.periodFourRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[3]);
-
-        courseGrade = courseView.findViewById(R.id.periodFiveGrade);
-        courseName = courseView.findViewById(R.id.periodFiveName);
-        teacherName = courseView.findViewById(R.id.periodFiveTeacher);
-        roomNumber = courseView.findViewById(R.id.periodFiveRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[4]);
-
-        courseGrade = courseView.findViewById(R.id.periodSixGrade);
-        courseName = courseView.findViewById(R.id.periodSixName);
-        teacherName = courseView.findViewById(R.id.periodSixTeacher);
-        roomNumber = courseView.findViewById(R.id.periodSixRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[5]);
-
-        courseGrade = courseView.findViewById(R.id.periodSevenGrade);
-        courseName = courseView.findViewById(R.id.periodSevenName);
-        teacherName = courseView.findViewById(R.id.periodSevenTeacher);
-        roomNumber = courseView.findViewById(R.id.periodSevenRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[6]);
-
-        courseGrade = courseView.findViewById(R.id.periodEightGrade);
-        courseName = courseView.findViewById(R.id.periodEightName);
-        teacherName = courseView.findViewById(R.id.periodEightTeacher);
-        roomNumber = courseView.findViewById(R.id.periodEightRoom);
-
-        changeCourseText(courseGrade, courseName, teacherName, roomNumber, courseDataObjects[7]);
-
+        changeCourseObjects(courseView, view, courses);
     }
-    private static void changeCourseText(View view, CourseDataObject firstCourse, CourseDataObject secondCourse){
-        (View) view.findViewById(R.id.first);
 
+    private static void changeCourseObjects(CourseView courseView, View view, CourseDataObject[] courses){ //
+        View[] courseBlocks = new View[] {view.findViewById(R.id.first_course_block), view.findViewById(R.id.second_course_block)};
+        changeGradeImages(courseView, courseBlocks, courses);
+        
+        final int nameLengthLimit = 16;
 
-        int nameLengthLimit = 16;
-        String courseTitle = courseDataObject.courseName;
+        for (int i = 0; i < 2; i++) {
+            String courseTitle = courses[i].courseName;
 
-        if (courseDataObject.courseName.length() > nameLengthLimit){
-             courseTitle = courseDataObject.courseName.substring(0,nameLengthLimit) + "...";
+            if (courses[i].courseName.length() > nameLengthLimit){
+                courseTitle = courses[i].courseName.substring(0,nameLengthLimit) + "...";//Shrinks course name if too long
+            }
+            TextView courseName = courseBlocks[i].findViewById(R.id.courseName);
+            courseName.setText(courseTitle); //I have to instantiate the textview or it doesn't let me change the text
+
+            TextView grade = courseBlocks[i].findViewById(R.id.grade);
+            grade.setText(courses[i].gradeScore);
+
+            TextView teacherName = courseBlocks[i].findViewById(R.id.teacherName);
+            teacherName.setText(courses[i].teacherName);
+
+            TextView roomNumber = courseBlocks[i].findViewById(R.id.roomNumber);
+            roomNumber.setText(courses[i].room);
         }
-        courseName.setText(courseTitle);
-        grade.setText(courseDataObject.gradeScore);
-        teacherName.setText(courseDataObject.teacherName);
-        roomNumber.setText(courseDataObject.room);
     }
 
-    private static void changeGradeImages(CourseView courseView, CourseDataObject[] courseDataObjects){
-        ImageView[] gradeLetters = new ImageView[] {courseView.findViewById(R.id.periodOneLetter), courseView.findViewById(R.id.periodTwoLetter),
-                courseView.findViewById(R.id.periodThreeLetter), courseView.findViewById(R.id.periodFourLetter),
-                courseView.findViewById(R.id.periodFiveLetter), courseView.findViewById(R.id.periodSixLetter),
-                courseView.findViewById(R.id.periodSevenLetter), courseView.findViewById(R.id.periodEightLetter)};
-        for (int i = 0; i < gradeLetters.length; i++) {
-            switch (courseDataObjects[i].gradeLetter){
+    private static void changeGradeImages(CourseView courseView, View[] courseBlocks, CourseDataObject[] courses){
+        ImageView[] images  = new  ImageView[]{courseBlocks[0].findViewById(R.id.gradeLetter), courseBlocks[1].findViewById(R.id.gradeLetter)};
+
+        for (int i = 0; i < 2; i++) {
+            switch (courses[i].gradeLetter){
                 case "A":
-                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.a));
+                    images[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.a));
                     break;
                 case "B":
-                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.b));
+                    images[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.b));
                     break;
                 case "C":
-                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.c));
+                    images[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.c));
                     break;
                 case "D":
-                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.d));
+                    images[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.d));
                     break;
                 case "F":
-                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.f));
+                    images[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.f));
                     break;
                 default:
-                    gradeLetters[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.na));
+                    images[i].setImageDrawable(ContextCompat.getDrawable(courseView, R.drawable.na));
                     break;
             }
         }

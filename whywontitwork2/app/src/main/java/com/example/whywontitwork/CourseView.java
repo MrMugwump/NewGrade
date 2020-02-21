@@ -49,7 +49,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
         Switch toggle = findViewById(R.id.gpaSwitch);
         changeGPAText(textView, toggle.isChecked(), gpa, toggle); //Sets gpa text
 
-        UpdateUI.changeUIObjects(this, courseDataObjects);
+        UpdateUI.updateUI(this, courseDataObjects);
 
 
         
