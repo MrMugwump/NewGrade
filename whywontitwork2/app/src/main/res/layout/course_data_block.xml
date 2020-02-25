@@ -29,6 +29,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/quicksand_light"
         android:text="@string/courseGrade"
+        android:textColor="@color/secondaryTextColor"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/gradeLetter"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,6 +56,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/quicksand_light"
         android:text="@string/courseName"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
