@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -55,6 +56,36 @@ public class MainActivity extends AppCompatActivity {
                         .apply();
             }
         });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("lifecycle","onStart invoked");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("lifecycle","onResume invoked");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("lifecycle","onPause invoked");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("lifecycle","onStop invoked");
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("lifecycle","onRestart invoked");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("lifecycle","onDestroy invoked");
     }
 
     public void attemptToLogin(View view) {
@@ -128,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             try {
                 progressDialog.setMessage("Logging In");
-                Login.login(password, id);
+                Login.login(password, id, MainActivity.this);
                 loggedIn = Login.checkLogin(DataHolder.getDoc());
             } catch (IOException e) {
                 e.printStackTrace();
