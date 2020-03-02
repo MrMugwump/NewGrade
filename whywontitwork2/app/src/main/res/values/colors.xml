@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#305f72</color><!--c06c84 FFA07A f67280--> <!--middle color-->
-    <color name="colorPrimaryDark">#445c3c</color> <!--212121--> <!--Darkest (text)-->
+    <color name="colorPrimaryDark">#f0b7a4</color> <!--212121-->
     <color name="colorAccent">#F5F5F5</color><!-- f5f5f5-->
     <color name="colorSecondary">#f0b7a4</color><!-- f7dba7 c06c84 f8b195--> <!--lightest-->
-    <color name="secondaryTextColor">#212121</color><!--B85D33--> <!--lighter text (darker than secondary)-->
+    <color name="secondaryTextColor">#212121</color><!--B85D33--> <!--main text-->
     <color name="shadowColor">#50212121</color><!--50212121-->
     <color name="logoBackgroundColor">#0f4c81</color>
 </resources>

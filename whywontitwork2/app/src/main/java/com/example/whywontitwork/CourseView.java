@@ -114,6 +114,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
         Paper.book().write("coursename", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].courseName);
         Paper.book().write("grade", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].gradeScore);
         Paper.book().write("teacher", DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].teacherName);
+        Paper.book().write("letter",  DataHolder.getCourseDataObjects()[DataHolder.getCourseChosen()].gradeLetter);
         Toast.makeText(this, "Period chosen for widget: " + (DataHolder.getCourseChosen()+1), Toast.LENGTH_SHORT).show();
         return false;
     }

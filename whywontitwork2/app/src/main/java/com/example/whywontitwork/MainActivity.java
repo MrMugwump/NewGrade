@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -17,8 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -31,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView imageView = findViewById(R.id.logo);
+        imageView.setImageResource(R.drawable.actuallieeitsorange); //For some reason won't load image without me doing this
 
         final SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         if (sharedPreferences.getString("Failsafe", null) != null)
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         .apply();
             }
         });
+
     }
     @Override
     protected void onStart() {

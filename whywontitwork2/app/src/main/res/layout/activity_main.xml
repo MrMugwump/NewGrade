@@ -130,7 +130,8 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline6"
-        tools:srcCompat="@drawable/actuallieeitsorange" />
+        tools:srcCompat="@drawable/actuallieeitsorange"
+        android:contentDescription="TODO" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"

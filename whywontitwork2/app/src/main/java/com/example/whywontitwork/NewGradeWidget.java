@@ -22,6 +22,7 @@ public class NewGradeWidget extends AppWidgetProvider {
         String courseName = Paper.book().read("coursename");
         String teacherName = Paper.book().read("teacher");
         String grade = Paper.book().read("grade");
+        String letter = Paper.book().read("letter");
 
         if (courseName.length() > 16){
             courseName = courseName.substring(0,16) + "...";
@@ -31,7 +32,25 @@ public class NewGradeWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widgetGrade, grade);
         views.setTextViewText(R.id.widgetCourseName, courseName);
         views.setTextViewText(R.id.widgetTeacherName, teacherName);
-        views.setImageViewResource(R.id.widgetImageView, R.drawable.a);
+        switch (letter){
+            case "A":
+                views.setImageViewResource(R.id.widgetImageView, R.drawable.a);
+                break;
+            case "B":
+                views.setImageViewResource(R.id.widgetImageView, R.drawable.b);
+                break;
+            case "C":
+                views.setImageViewResource(R.id.widgetImageView, R.drawable.c);
+                break;
+            case "D":
+                views.setImageViewResource(R.id.widgetImageView, R.drawable.d);
+                break;
+            case "F":
+                views.setImageViewResource(R.id.widgetImageView, R.drawable.f);
+                break;
+            default:
+                views.setImageViewResource(R.id.widgetImageView, R.drawable.na);
+        }
 
         //Create an Intent with the AppWidgetManager.ACTION_APPWIDGET_UPDATE action//
 

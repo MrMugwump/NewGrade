@@ -59,7 +59,7 @@
         android:fontFamily="@font/quicksand_light"
         android:text="@string/gpa"
         android:textColor="@color/colorAccent"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline2"

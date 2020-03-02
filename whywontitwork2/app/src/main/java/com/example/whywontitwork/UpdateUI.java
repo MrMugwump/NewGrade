@@ -13,25 +13,26 @@ class UpdateUI {
         View view = courseView.findViewById(R.id.periodOneAndTwo);
         CourseDataObject[] courses = new CourseDataObject[]{courseDataObjects[0], courseDataObjects[1]};
 
-        changeCourseObjects(courseView, view, courses);
+        changeCourseObjects(courseView, view, courses, new int[]{1,2});
 
         view = courseView.findViewById(R.id.periodThreeAndFour);
         courses = new CourseDataObject[]{courseDataObjects[2], courseDataObjects[3]};
 
-        changeCourseObjects(courseView, view, courses);
+        changeCourseObjects(courseView, view, courses, new int[]{3,4});
 
         view = courseView.findViewById(R.id.periodFiveAndSix);
         courses = new CourseDataObject[]{courseDataObjects[4], courseDataObjects[5]};
 
-        changeCourseObjects(courseView, view, courses);
+        changeCourseObjects(courseView, view, courses, new int[]{5,6});
 
         view = courseView.findViewById(R.id.periodSevenAndEight);
         courses = new CourseDataObject[]{courseDataObjects[6], courseDataObjects[7]};
 
-        changeCourseObjects(courseView, view, courses);
+        changeCourseObjects(courseView, view, courses, new int[]{7,8});
+
     }
 
-    private static void changeCourseObjects(CourseView courseView, View view, CourseDataObject[] courses){ //
+    private static void changeCourseObjects(CourseView courseView, View view, CourseDataObject[] courses, int[] periodNumbers){ //
         View[] courseBlocks = new View[] {view.findViewById(R.id.first_course_block), view.findViewById(R.id.second_course_block)};
         changeGradeImages(courseView, courseBlocks, courses);
         
@@ -54,6 +55,9 @@ class UpdateUI {
 
             TextView roomNumber = courseBlocks[i].findViewById(R.id.roomNumber);
             roomNumber.setText(courses[i].room);
+
+            TextView periodNumber = courseBlocks[i].findViewById(R.id.period);
+            periodNumber.setText("Period "+periodNumbers[i]);
         }
     }
 
