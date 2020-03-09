@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import static android.content.Context.MODE_PRIVATE;
 
-class DataCaching {
+ public class  DataCaching {
     static GsonBuilder gsonb = new GsonBuilder();
     static Gson mGson = gsonb.create();
 
@@ -75,4 +75,9 @@ class DataCaching {
         return  context.getPreferences(MODE_PRIVATE);
     }
 
-}
+
+
+
+
+
+ }

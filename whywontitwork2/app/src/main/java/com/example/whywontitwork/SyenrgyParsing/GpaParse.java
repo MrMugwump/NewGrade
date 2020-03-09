@@ -33,4 +33,9 @@ class GpaParse {
 
         return gpaArray;
     }
+
+    public Connection.Response getLoginForm(Connection.Response loginForm){
+        return loginForm;
+    }
+
 }

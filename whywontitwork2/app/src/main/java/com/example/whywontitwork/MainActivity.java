@@ -18,6 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.SyenrgyParsing.Login;
+import com.example.whywontitwork.SyenrgyParsing.DataCaching;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -81,8 +84,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("lifecycle","onStop invoked");
     }
     @Override
-    protected void onRestart() {
+    protected void onRestart () {
         super.onRestart();
+
+
         Log.d("lifecycle","onRestart invoked");
     }
     @Override
