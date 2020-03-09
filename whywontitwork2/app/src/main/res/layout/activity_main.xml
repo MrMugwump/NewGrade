@@ -110,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5833333333333333333333333333333333333" />
+        app:layout_constraintGuide_percent=".565" />
 
     <View
         android:id="@+id/view2"
@@ -139,7 +139,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.225" />
+        app:layout_constraintGuide_percent="0.20" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
