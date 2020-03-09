@@ -105,8 +105,11 @@ public class MainActivity extends AppCompatActivity {
     private void storeCredentials(){
         EditText emailField = findViewById(R.id.emailForm);
         String email = emailField.getText().toString();
+        if (email.isEmpty())
+            return;
         EditText passwordField = findViewById(R.id.passwordForm);
         String password = passwordField.getText().toString();
+
 
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();

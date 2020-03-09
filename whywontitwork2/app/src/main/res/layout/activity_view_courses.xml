@@ -31,8 +31,8 @@
             <include
                 android:id="@+id/periodOneAndTwo"
                 layout="@layout/course_view_section"
-                android:layout_height="200dp"
-                android:layout_width="match_parent"/>
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
 
             <include android:id="@+id/periodThreeAndFour"
                 layout="@layout/course_view_section"

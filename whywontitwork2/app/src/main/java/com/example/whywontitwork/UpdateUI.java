@@ -57,7 +57,7 @@ class UpdateUI {
             roomNumber.setText(courses[i].room);
 
             TextView periodNumber = courseBlocks[i].findViewById(R.id.period);
-            periodNumber.setText("Period "+periodNumbers[i]);
+            periodNumber.setText("Period " + periodNumbers[i]);
         }
     }
 

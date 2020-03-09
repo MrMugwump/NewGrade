@@ -1,11 +1,12 @@
 package com.example.whywontitwork.SyenrgyParsing;
-import android.provider.ContactsContract;
+
 import android.util.Log;
 
 import com.example.whywontitwork.DataObjects.DataHolder;
 import com.example.whywontitwork.MainActivity;
 
-import org.jsoup.*;
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
@@ -46,8 +47,7 @@ public class Login {
 
         String HomePageHtml = doc.toString();
         DataHolder.setDoc(doc);
-        //Log.d("what", "login: " +doc.toString());
-        //TimeUnit.SECONDS.sleep(4);
+
         DataHolder.setLoginAutomatically(checkLogin(doc));
         if(!checkLogin(doc)) //Checks if you logged in before running anything else
             return;
@@ -94,7 +94,6 @@ public class Login {
     }
 
     public static boolean checkLogin(Document doc) {
-        //Log.d("whut", "checkLogin: REEEEE");
         return !doc.toString().contains("Return to common login");
     }
 
