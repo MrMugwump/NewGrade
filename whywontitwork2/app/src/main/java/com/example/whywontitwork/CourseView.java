@@ -81,6 +81,7 @@ public class CourseView extends AppCompatActivity implements PopupMenu.OnMenuIte
 
     public void GoToAssignmentView(View view){
         Intent intent = new Intent(this, AssignmentView.class);
+        intent.putExtra("Period Number", view.getContentDescription());
         startActivity(intent);
     }
 

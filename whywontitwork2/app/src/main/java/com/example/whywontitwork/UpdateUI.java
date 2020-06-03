@@ -1,6 +1,7 @@
 package com.example.whywontitwork;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -58,6 +59,9 @@ class UpdateUI {
 
             TextView periodNumber = courseBlocks[i].findViewById(R.id.period);
             periodNumber.setText("Period " + periodNumbers[i]);
+
+            Button button = courseBlocks[i].findViewById(R.id.button);
+            button.setContentDescription(Integer.toString(periodNumbers[i]));
         }
     }
 

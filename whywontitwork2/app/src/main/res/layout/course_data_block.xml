@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/teacherName" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/custom_buttom_drawable"
